@@ -12,6 +12,8 @@
 		97CD40F8226323D7000877DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97CD40F6226323D7000877DA /* Main.storyboard */; };
 		97CD40FA226323D7000877DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97CD40F9226323D7000877DA /* Assets.xcassets */; };
 		97CD40FD226323D7000877DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97CD40FB226323D7000877DA /* LaunchScreen.storyboard */; };
+		97EC0696226DC6EC0021DD29 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EC0695226DC6EC0021DD29 /* DateManager.swift */; };
+		97EC069A226DC7420021DD29 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EC0699226DC7420021DD29 /* CalendarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		97CD40F9226323D7000877DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97CD40FC226323D7000877DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97CD40FE226323D7000877DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97EC0695226DC6EC0021DD29 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		97EC0699226DC7420021DD29 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		97CD40F1226323D7000877DA /* NewLook */ = {
 			isa = PBXGroup;
 			children = (
+				97EC0699226DC7420021DD29 /* CalendarCell.swift */,
+				97EC0695226DC6EC0021DD29 /* DateManager.swift */,
 				97CD40F2226323D7000877DA /* AppDelegate.swift */,
 				97CD40F4226323D7000877DA /* ViewController.swift */,
 				97CD40F6226323D7000877DA /* Main.storyboard */,
@@ -136,7 +142,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				97CD40F5226323D7000877DA /* ViewController.swift in Sources */,
+				97EC0696226DC6EC0021DD29 /* DateManager.swift in Sources */,
 				97CD40F3226323D7000877DA /* AppDelegate.swift in Sources */,
+				97EC069A226DC7420021DD29 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
