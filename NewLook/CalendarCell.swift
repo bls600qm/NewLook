@@ -10,18 +10,14 @@ import UIKit
 
 class CalendarCell: UICollectionViewCell {
     
-    var textLabel : UILabel!
+    var textLabel: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)!
+        super.init(coder: aDecoder)!
         
-        //UILabelを生成
-        textLabel = UILabel(frame: CGRect(x:0, y:0, width:self.frame.width,  height: self.frame.height))
-        textLabel.font = UIFont(name: "HiraKakuProN-W3", size: 12)
-        textLabel.textAlignment = NSTextAlignment.center
-        
-        // Cellに追加
-        self.addSubview(textLabel!)
+        textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        textLabel.font = UIFont(name: "HirakakuPro-W3", size: 12)
+        textLabel.textAlignment = .center
     }
     
     override init(frame: CGRect) {

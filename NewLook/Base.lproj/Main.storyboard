@@ -44,14 +44,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Ppf-DR-jDI" customClass="CalendarCell" customModule="NewLook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="Cell" id="Ppf-DR-jDI" customClass="CalendarCell" customModule="NewLook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="380"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="380"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
-                                        <size key="customSize" width="50" height="50"/>
+                                        <size key="customSize" width="50" height="380"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -111,7 +111,7 @@
                     </view>
                     <connections>
                         <outlet property="button" destination="pvE-wo-icL" id="jHV-09-PLy"/>
-                        <outlet property="calenderCollectionView" destination="cf0-9r-ZbB" id="ZSX-Cv-ZkC"/>
+                        <outlet property="calenderCollectionView" destination="cf0-9r-ZbB" id="DWF-xe-sLN"/>
                         <outlet property="calenderHeaderView" destination="G95-Pr-SEI" id="lZe-kt-wwk"/>
                         <outlet property="headerNextBtn" destination="Nru-ab-4Bh" id="rnZ-NS-RvO"/>
                         <outlet property="headerPrevBtn" destination="TAE-6O-d3Z" id="PD7-14-R6W"/>
