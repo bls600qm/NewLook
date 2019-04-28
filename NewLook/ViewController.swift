@@ -6,6 +6,8 @@
 //  Copyright © 2019 Rika Sumitomo. All rights reserved.
 //
 
+
+
 import UIKit
 
 extension UIColor {
@@ -63,7 +65,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
-        calenderCollectionView.backgroundColor = UIColor.white
+//        calenderCollectionView.backgroundColor = UIColor.white
     }
     
     //①タップ時

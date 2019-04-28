@@ -10,4 +10,7 @@ import UIKit
 
 class DateManager: NSObject {
 
+    // ⑴表記する日にちの取得
+    
+
 }
