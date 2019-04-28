@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     let dateManager = DateManager()
     let daysPerWeek: Int = 7
-    let cellMargin: CGFloat = 2.0
+    let cellMargin: CGFloat = 2.0 //セルの余白
     var selectedDate = NSDate()
     var today: NSDate!
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -81,34 +81,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         headerTitle.text = changeHeaderTitle(date: selectedDate)
     }
     
-    //アルバムから選択かカメラで撮影かを選択するAlertControllerを出す
-    @IBAction func showAlert(_ sender: Any) {
-        let actionSheet = UIAlertController(title: "画像の選択", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        
-        let action1 = UIAlertAction(title: "アルバムから選択", style: UIAlertAction.Style.default, handler: {
-            (action: UIAlertAction!) in
-            print("アルバムから選択")
-            self.tappedlibrary()
-        })
-        
-        let action2 = UIAlertAction(title: "カメラで撮影", style: UIAlertAction.Style.default, handler: {
-            (action: UIAlertAction!) in
-            print("カメラで撮影")
-            self.tappedcamera()
-            
-        })
-        
-        let cancel = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.default, handler: {
-            (action: UIAlertAction!) in
-            print("キャンセルをタップした時の処理")
-        })
-        
-        actionSheet.addAction(action1)
-        actionSheet.addAction(action2)
-        actionSheet.addAction(cancel)
-        
-        self.present(actionSheet, animated: true, completion: nil)
-    }
 
     //1
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -149,9 +121,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfMargin: CGFloat = 8.0
         let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
-        let height: CGFloat = width * 1.0
-        //return CGSizeMake(width,height)
-
+        let height: CGFloat = width * 1.5 //セルの縦幅
         return CGSizeMake(width, height)
     }
     
@@ -175,6 +145,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         formatter.dateFormat = "M/yyyy"
         let selectMonth = formatter.string(from: date as Date)
         return selectMonth
+    }
+    
+    
+    
+    
+    //カメラの処理
+    //アルバムから選択かカメラで撮影かを選択するAlertControllerを出す
+    @IBAction func showAlert(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "画像の選択", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        
+        let action1 = UIAlertAction(title: "アルバムから選択", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            print("アルバムから選択")
+            self.tappedlibrary()
+        })
+        
+        let action2 = UIAlertAction(title: "カメラで撮影", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            print("カメラで撮影")
+            self.tappedcamera()
+            
+        })
+        
+        let cancel = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            print("キャンセルをタップした時の処理")
+        })
+        
+        actionSheet.addAction(action1)
+        actionSheet.addAction(action2)
+        actionSheet.addAction(cancel)
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     //アルバムから選択するメソッド

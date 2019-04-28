@@ -83,7 +83,6 @@ class DateManager: NSObject {
     }
 
     // ⑵表記の変更
-
     func conversionDateFormat(indexPath: IndexPath) -> String {
 
         dateForCellAtIndexPath(numberOfItem: numberOfItems)
@@ -93,13 +92,6 @@ class DateManager: NSObject {
 
         return formatter.string(from: currentMonthOfDates[indexPath.row] as Date)
     }
-//    //月日を返す
-//    func monthTag(row:Int,startDate:Date) -> String{
-//        let cellDate = dateForCellAtIndexPath(row: row,startDate:startDate)
-//        let formatter:DateFormatter = DateFormatter()
-//        formatter.dateFormat = "YM"
-//        return formatter.string(from:cellDate)
-//    }
 
     //前月の表示
     func prevMonth(date: Date) -> Date {
@@ -114,5 +106,7 @@ class DateManager: NSObject {
         selectedDate = date.monthLaterDate()
         return selectedDate
     }
+
+
 }
 
