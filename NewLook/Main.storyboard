@@ -40,6 +40,7 @@
                                             <color key="titleColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="tappedHeaderPrevBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9j2-ul-tpG"/>
                                             <action selector="tappedHeaderPrevBtnWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W9j-gL-Md9"/>
                                         </connections>
                                     </button>
@@ -49,6 +50,7 @@
                                             <color key="titleColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="tappedHeaderNextBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CuD-CB-xO9"/>
                                             <action selector="tappedHeaderNextBtnWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kL0-bV-FJ7"/>
                                         </connections>
                                     </button>
@@ -70,26 +72,31 @@
                                     <constraint firstItem="TAE-6O-d3Z" firstAttribute="top" secondItem="G95-Pr-SEI" secondAttribute="topMargin" id="kJi-rz-0Ew"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nu9-JX-9wL">
-                                <rect key="frame" x="40" y="109" width="240" height="128"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cf0-9r-ZbB">
+                                <rect key="frame" x="16" y="77" width="288" height="245"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ycz-D7-lBE">
-                                    <size key="itemSize" width="50" height="380"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3rz-om-D3w">
+                                    <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="scW-4D-k3z" customClass="CalendarCell" customModule="NewLook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="380"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Ppf-DR-jDI" customClass="CalendarCell" customModule="NewLook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="380"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
+                                        <size key="customSize" width="50" height="50"/>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="xmp-dJ-7LT"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="cjS-tJ-nym"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,7 +112,7 @@
                     </view>
                     <connections>
                         <outlet property="button" destination="pvE-wo-icL" id="jHV-09-PLy"/>
-                        <outlet property="calenderCollectionView" destination="nu9-JX-9wL" id="N14-S2-MQ8"/>
+                        <outlet property="calenderCollectionView" destination="cf0-9r-ZbB" id="ZSX-Cv-ZkC"/>
                         <outlet property="calenderHeaderView" destination="G95-Pr-SEI" id="lZe-kt-wwk"/>
                         <outlet property="headerNextBtn" destination="Nru-ab-4Bh" id="rnZ-NS-RvO"/>
                         <outlet property="headerPrevBtn" destination="TAE-6O-d3Z" id="PD7-14-R6W"/>

@@ -66,14 +66,76 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
 //        calenderCollectionView.backgroundColor = UIColor.white
+        
+        headerTitle.text = changeHeaderTitle(date: selectedDate) //追記
     }
     
+    //headerの月を変更
+    func changeHeaderTitle(date: NSDate) -> String {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "M/yyyy"
+        let selectMonth = formatter.string(from: date as Date)
+        return selectMonth
+    }
     //①タップ時
-    @IBAction func tappedHeaderPrevBtn(sender: UIButton) {
+    @IBAction func tappedHeaderPrevBtn(_ sender: UIButton) {
+        selectedDate = dateManager.prevMonth(date: selectedDate as Date) as NSDate
+        calenderCollectionView.reloadData()
+        headerTitle.text = changeHeaderTitle(date: selectedDate)
+    }
+    //②タップ時
+   
+    @IBAction func tappedHeaderNextBtn(_ sender: UIButton) {
+        selectedDate = dateManager.nextMonth(date: selectedDate as Date) as NSDate
+        calenderCollectionView.reloadData()
+        headerTitle.text = changeHeaderTitle(date: selectedDate)
     }
     
-    //②タップ時
-    @IBAction func tappedHeaderNextBtn(sender: UIButton) {
+    
+    //3
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! CalendarCell
+        //テキストカラー
+        if (indexPath.row % 7 == 0) {
+            cell.textLabel.textColor = UIColor.lightRed()
+        } else if (indexPath.row % 7 == 6) {
+            cell.textLabel.textColor = UIColor.lightBlue()
+        } else {
+            cell.textLabel.textColor = UIColor.gray
+        }
+        //テキスト配置
+        if indexPath.section == 0 {
+            cell.textLabel.text = weekArray[indexPath.row]
+        } else {
+            cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath as IndexPath)
+            //月によって1日の場所は異なる(後ほど説明します)
+        }
+        return cell
+    }
+    
+    //セルのサイズを設定
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let numberOfMargin: CGFloat = 8.0
+        let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
+        let height: CGFloat = width * 1.0
+        //return CGSizeMake(width,height)
+
+        return CGSizeMake(width, height)
+        
+    }
+    func CGSizeMake(_ width: CGFloat, _ height: CGFloat) -> CGSize {
+        return CGSize(width: width, height: height)
+    }
+    
+    //セルの垂直方向のマージンを設定
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return cellMargin
+    }
+    
+    //セルの水平方向のマージンを設定
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return cellMargin
     }
     
     

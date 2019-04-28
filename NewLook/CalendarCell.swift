@@ -18,6 +18,7 @@ class CalendarCell: UICollectionViewCell {
         textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         textLabel.font = UIFont(name: "HirakakuPro-W3", size: 12)
         textLabel.textAlignment = .center
+        self.addSubview(textLabel!)
     }
     
     override init(frame: CGRect) {
