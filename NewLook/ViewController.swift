@@ -68,18 +68,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
     //①タップ時
-    @IBAction func tappedHeaderPrevBtn(_ sender: UIButton) {
+    @IBAction func tappedHeaderPrevBtn(sender: UIButton) {
         selectedDate = dateManager.prevMonth(date: selectedDate as Date) as NSDate
         calenderCollectionView.reloadData()
         headerTitle.text = changeHeaderTitle(date: selectedDate)
     }
     //②タップ時
-    
-    @IBAction func tappedHeaderNextBtn(_ sender: UIButton) {
+
+    @IBAction func tappedHeaderNextBtn(sender: UIButton) {
         selectedDate = dateManager.nextMonth(date: selectedDate as Date) as NSDate
         calenderCollectionView.reloadData()
         headerTitle.text = changeHeaderTitle(date: selectedDate)
     }
+    
     //アルバムから選択かカメラで撮影かを選択するAlertControllerを出す
     @IBAction func showAlert(_ sender: Any) {
         let actionSheet = UIAlertController(title: "画像の選択", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
