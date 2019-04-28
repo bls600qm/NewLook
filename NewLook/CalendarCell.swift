@@ -25,5 +25,6 @@ class CalendarCell: UICollectionViewCell {
         textLabel.textAlignment = .center
         self.contentView.addSubview(textLabel!)
         
+        
     }
 }

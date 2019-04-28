@@ -98,6 +98,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="pvE-wo-icL" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OfN-TL-KwN"/>
                             <constraint firstItem="G95-Pr-SEI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TEX-OE-aJu"/>
@@ -107,6 +108,10 @@
                             <constraint firstAttribute="trailing" secondItem="G95-Pr-SEI" secondAttribute="trailing" id="tdY-bN-eBs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="t5D-Kv-7uC" appends="YES" id="QP0-n1-rgv"/>
+                            <outletCollection property="gestureRecognizers" destination="d5L-0e-PyX" appends="YES" id="f4b-hu-rl2"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="button" destination="pvE-wo-icL" id="2FH-zB-Wlr"/>
@@ -118,6 +123,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="t5D-Kv-7uC">
+                    <connections>
+                        <action selector="swipePrevCalendar:" destination="BYZ-38-t0r" id="9nD-MB-tZM"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="d5L-0e-PyX">
+                    <connections>
+                        <action selector="swipePrevCalendar:" destination="BYZ-38-t0r" id="rcM-wd-XNY"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.875" y="108.80281690140845"/>
         </scene>

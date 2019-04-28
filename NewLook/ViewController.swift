@@ -29,6 +29,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var today: NSDate!
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
+   
+    
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
     @IBOutlet weak var headerNextBtn: UIButton!//②
@@ -76,6 +78,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //②タップ時
 
     @IBAction func tappedHeaderNextBtn(sender: UIButton) {
+        selectedDate = dateManager.nextMonth(date: selectedDate as Date) as NSDate
+        calenderCollectionView.reloadData()
+        headerTitle.text = changeHeaderTitle(date: selectedDate)
+    }
+    //左スワイプで前月を表示
+    @IBAction func swipePrevCalendar(_ sender: UISwipeGestureRecognizer) {
+        selectedDate = dateManager.prevMonth(date: selectedDate as Date) as NSDate
+        calenderCollectionView.reloadData()
+        headerTitle.text = changeHeaderTitle(date: selectedDate)
+    }
+    
+    //右スワイプで次月を表示
+    @IBAction func swipeNextCalendar(_ sender: UISwipeGestureRecognizer) {
         selectedDate = dateManager.nextMonth(date: selectedDate as Date) as NSDate
         calenderCollectionView.reloadData()
         headerTitle.text = changeHeaderTitle(date: selectedDate)
@@ -146,9 +161,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let selectMonth = formatter.string(from: date as Date)
         return selectMonth
     }
-    
-    
-    
+   
+   
     
     //カメラの処理
     //アルバムから選択かカメラで撮影かを選択するAlertControllerを出す
