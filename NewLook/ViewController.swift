@@ -28,10 +28,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var selectedDate = NSDate()
     var today: NSDate!
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
-   
     
-    @IBOutlet weak var button: UIButton!
+    var date: String! = nil
+    
+    @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
     @IBOutlet weak var headerNextBtn: UIButton!//②
     @IBOutlet weak var headerTitle: UILabel!    //③
@@ -43,10 +43,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         // ボタンの装飾
         let rgba = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタン背景色設定
-        button.backgroundColor = rgba                                               // 背景色
-        button.layer.borderWidth = 0.5                                              // 枠線の幅
-        button.layer.borderColor = UIColor.black.cgColor                            // 枠線の色
-        button.layer.cornerRadius = 10.0                                             //
+        writeButton.backgroundColor = rgba                                               // 背景色
+        writeButton.layer.borderWidth = 0.5                                              // 枠線の幅
+        writeButton.layer.borderColor = UIColor.black.cgColor                            // 枠線の色
+        writeButton.layer.cornerRadius = 10.0                                             //
         
 
         let barHeight = UIApplication.shared.statusBarFrame.size.height
@@ -159,10 +159,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = "M/yyyy"
         let selectMonth = formatter.string(from: date as Date)
+        
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
+        
+        //print(formatter.string(from: Date())) //日付ログに出力
+        print("date selected: \(formatter.string(from: Date()))") //日付ログに出力
+    
+        self.date = formatter.string(from: Date())
+
         return selectMonth
     }
-   
-   
+
+    @IBAction func writeButtonPushed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toDiary", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toDiary") {
+            let diaryView = segue.destination as! DiaryViewController
+            diaryView.date = self.date
+        }
+    }
+    
+    
     
     //カメラの処理
     //アルバムから選択かカメラで撮影かを選択するAlertControllerを出す
