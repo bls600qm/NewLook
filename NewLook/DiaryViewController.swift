@@ -19,12 +19,7 @@ class DiaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        dateLabel.text = date
-        
-    }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,6 +29,8 @@ class DiaryViewController: UIViewController {
         
         // STEP.1 Realmを初期化
         let realm = try! Realm()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
         
         //STEP.2 保存する要素を書く
         let diary = Diary()
@@ -53,5 +50,6 @@ class DiaryViewController: UIViewController {
     //改行で入力確定
     @IBAction func memo(_ sender: Any) {
     }
+    
     
 }

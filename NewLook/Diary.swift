@@ -11,9 +11,10 @@ import RealmSwift
 
 class Diary: Object {
     
-    dynamic var date = ""
-    dynamic var context = ""
-    dynamic var photo: NSData? = nil
+   
+    @objc dynamic var date = ""
+    @objc dynamic var context = ""
+    @objc dynamic var photo: NSData? = nil
     
     override static func primaryKey() -> String? {
         return "date"

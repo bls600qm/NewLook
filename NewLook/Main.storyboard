@@ -93,7 +93,7 @@
                                 </state>
                                 <connections>
                                     <action selector="writeButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WdQ-LC-WXc"/>
-                                    <segue destination="9yS-FJ-67i" kind="show" identifier="toDiary" id="e2G-hD-Xii"/>
+                                    <segue destination="9yS-FJ-67i" kind="show" identifier="toDiary" id="0sE-mh-XWW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -153,7 +153,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveButtonPushed:" destination="9yS-FJ-67i" eventType="touchUpInside" id="vWZ-Mg-t7H"/>
+                                    <action selector="saveButtonPushed:" destination="9yS-FJ-67i" eventType="touchUpInside" id="jOs-Lb-6Pe"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日付" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63d-py-9Sp">
@@ -178,8 +178,8 @@
                         <viewLayoutGuide key="safeArea" id="v3m-a0-Pjz"/>
                     </view>
                     <connections>
-                        <outlet property="contextTextField" destination="u4U-z9-lKo" id="dDD-EG-wZr"/>
-                        <outlet property="dateLabel" destination="63d-py-9Sp" id="VnU-51-LvV"/>
+                        <outlet property="contextTextField" destination="u4U-z9-lKo" id="N1P-3y-GNI"/>
+                        <outlet property="dateLabel" destination="63d-py-9Sp" id="0Ip-JQ-hst"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ZB-ic-OIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
