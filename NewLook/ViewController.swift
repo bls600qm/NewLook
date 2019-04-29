@@ -135,7 +135,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             cell.textLabel.text = weekArray[indexPath.row]
         } else {
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
-            //月によって1日の場所は異なる(後ほど説明します)
+       
         }
         return cell
     }
