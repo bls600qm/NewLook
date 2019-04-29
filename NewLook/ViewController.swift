@@ -29,6 +29,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var today: NSDate!
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
+    let margin: CGFloat = 3.0
+
+    
     var date: String! = nil
     
     @IBOutlet weak var writeButton: UIButton!
@@ -41,21 +44,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // ボタンの装飾
-        let rgba = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0) // ボタン背景色設定
-        writeButton.backgroundColor = rgba                                               // 背景色
-        writeButton.layer.borderWidth = 0.5                                              // 枠線の幅
-        writeButton.layer.borderColor = UIColor.black.cgColor                            // 枠線の色
-        writeButton.layer.cornerRadius = 10.0                                             //
-        
-
         let barHeight = UIApplication.shared.statusBarFrame.size.height
         let width = self.view.frame.width
         let height = self.view.frame.height
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
-
-        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 50, width:width, height:height - barHeight - 50)
+        
+        //collectionViewの大きさ
+        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 50, width:width, height:height - barHeight - 180)
         calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
@@ -63,11 +59,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         headerTitle.text = changeHeaderTitle(date: selectedDate) //追記
 
         self.view.addSubview(calenderCollectionView)
+     
 
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    //書くボタンの画面遷移
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toDiary") {
+            let diaryView = segue.destination as! DiaryViewController
+            diaryView.date = self.date
+        }
     }
     //①タップ時
     @IBAction func tappedHeaderPrevBtn(sender: UIButton) {
@@ -96,6 +100,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         headerTitle.text = changeHeaderTitle(date: selectedDate)
     }
     
+    //かくボタン押したとき
+    @IBAction func writeButtonPushed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toDiary", sender: nil)
+    }
 
     //1
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -136,7 +144,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfMargin: CGFloat = 8.0
         let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
-        let height: CGFloat = width * 1.5 //セルの縦幅
+        let height: CGFloat = width * 1.3 //セルの縦幅
         return CGSizeMake(width, height)
     }
     
@@ -170,16 +178,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return selectMonth
     }
 
-    @IBAction func writeButtonPushed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "toDiary", sender: nil)
-    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "toDiary") {
-            let diaryView = segue.destination as! DiaryViewController
-            diaryView.date = self.date
-        }
-    }
+    
+    
     
     
     
