@@ -15,7 +15,6 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var contextTextField: UITextField!
-    //@IBOutlet var photoButton: UIButton!
     @IBOutlet var photoImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -57,7 +56,9 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let diary = Diary()
         diary.date = date
         diary.context = contextTextField.text!
+        //diary.photo = photoImageView.image!
         
+            
         //STEP.3 Realmに書き込み
         try! realm.write {
             realm.add(diary, update: true)
@@ -113,7 +114,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
             // インスタンスの作成
             let cameraPicker = UIImagePickerController()
             cameraPicker.sourceType = sourceType
-            cameraPicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            cameraPicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
             self.present(cameraPicker, animated: true, completion: nil)
         }
         else{
@@ -130,7 +131,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
             // インスタンスの作成
             let cameraPicker = UIImagePickerController()
             cameraPicker.sourceType = sourceType
-            cameraPicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            cameraPicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
             self.present(cameraPicker, animated: true, completion: nil)
             
         }
@@ -146,10 +147,22 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     //撮影が完了した時に呼ばれる
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         self.dismiss(animated: true, completion: nil)
+        
+        // 選択した写真を取得する
+        let image = info[.originalImage] as! UIImage
         //画像を出力
-        photoImageView.image = info[.originalImage] as? UIImage
+        photoImageView.image = image
+        //画像をNSDataに変換
+        let data = image.pngData() as NSData?
+        
+        //NSDataへの変換が成功していたら
+        if let pngData = data {
+            //BASE64のStringに変換する
+            let encodeString: String = pngData.base64EncodedString()
+            print(encodeString)
+        }
+        
     }
 
-    
     
 }
