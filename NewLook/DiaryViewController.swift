@@ -12,13 +12,14 @@ import RealmSwift
 class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     var date: String!
-    
+    var photo: NSData!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var contextTextField: UITextField!
     @IBOutlet var photoImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
    
     override func didReceiveMemoryWarning() {
@@ -51,12 +52,11 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
-        
         //STEP.2 保存する要素を書く
         let diary = Diary()
         diary.date = date
         diary.context = contextTextField.text!
-        //diary.photo = photoImageView.image!
+        diary.photo = photo
         
             
         //STEP.3 Realmに書き込み
@@ -104,6 +104,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    
     //アルバムから選択するメソッド
     func tappedlibrary() {
         let sourceType:UIImagePickerController.SourceType =
@@ -144,8 +145,9 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         picker.dismiss(animated: true, completion: nil)
     }
     
-    //撮影が完了した時に呼ばれる
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    
+    //写真のピックが完了した時に呼ばれる
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         self.dismiss(animated: true, completion: nil)
         
         // 選択した写真を取得する
@@ -153,16 +155,8 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         //画像を出力
         photoImageView.image = image
         //画像をNSDataに変換
-        let data = image.pngData() as NSData?
-        
-        //NSDataへの変換が成功していたら
-        if let pngData = data {
-            //BASE64のStringに変換する
-            let encodeString: String = pngData.base64EncodedString()
-            print(encodeString)
-        }
-        
-    }
-
+        let photo = image.pngData() as NSData?
+        print(photo as Any)
     
+    }
 }
