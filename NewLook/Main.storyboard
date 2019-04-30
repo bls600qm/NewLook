@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqW-wT-B4h">
-                                <rect key="frame" x="30" y="220" width="240" height="128"/>
+                                <rect key="frame" x="40" y="99" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xj5-uP-hMn">
@@ -164,7 +164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メモを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4U-z9-lKo">
-                                <rect key="frame" x="54" y="113" width="192" height="30"/>
+                                <rect key="frame" x="64" y="322" width="192" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -173,6 +173,15 @@
                                     <action selector="memo:" destination="9yS-FJ-67i" eventType="editingDidEndOnExit" id="m5n-zv-PIN"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfT-Br-GGa">
+                                <rect key="frame" x="112" y="250" width="102" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="写真を選択"/>
+                                <connections>
+                                    <action selector="showAlert:" destination="9yS-FJ-67i" eventType="touchUpInside" id="E1N-Dz-snI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="v3m-a0-Pjz"/>
@@ -180,6 +189,7 @@
                     <connections>
                         <outlet property="contextTextField" destination="u4U-z9-lKo" id="N1P-3y-GNI"/>
                         <outlet property="dateLabel" destination="63d-py-9Sp" id="0Ip-JQ-hst"/>
+                        <outlet property="photoImageView" destination="IqW-wT-B4h" id="lt7-cc-D6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ZB-ic-OIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
