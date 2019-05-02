@@ -55,17 +55,26 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         DispatchQueue(label: "background").async {
             let realm = try! Realm()
             
-            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last {
-                let context = savedDiary.context
-                let photoData = savedDiary.photo
+            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合 //今日のやつ
                 
-                // 読み込んだ NSData を UIImage へ変換します。
-                let img : UIImage! = UIImage(data:photoData! as Data)
+               // let context = savedDiary.context
+               // let photoData = savedDiary.photo
+                
+               // if let photoData = realm.objects(Diary.self).filter("photo == '\(self.photo!)'").last {
+                
+                 //すでに値が入ってたらけしちゃう！
+                    try! realm.write {
+                       realm.delete(savedDiary)
+                    }
+               // }
+
+                // 読み込んだ NSData を UIImage へ変換
+              //  let img : UIImage! = UIImage(data:photoData! as Data)
                 
                 DispatchQueue.main.async {
-                    self.contextTextField.text = context
+              //      self.contextTextField.text = context
                     //imageViewに画像を表示
-                self.photoImageView.image = img
+                //self.photoImageView.image = img
 
                 }
             }
@@ -85,7 +94,6 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         diary.context = contextTextField.text!
         diary.photo = photo
         
-            
         //STEP.3 Realmに書き込み
         try! realm.write {
             realm.add(diary, update: true)
