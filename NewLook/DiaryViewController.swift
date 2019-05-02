@@ -57,17 +57,16 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
             
             if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last {
                 let context = savedDiary.context
-              //*1  let photoData = savedDiary.photo
+                let photoData = savedDiary.photo
                 
                 // 読み込んだ NSData を UIImage へ変換します。
-             //*2   let img : UIImage! = UIImage(data:photoData! as Data)
+                let img : UIImage! = UIImage(data:photoData! as Data)
                 
                 DispatchQueue.main.async {
                     self.contextTextField.text = context
                     //imageViewに画像を表示
-             //*3 self.photoImageView.image = img
+                self.photoImageView.image = img
 
-                    //*のついてる所が画像を表示させる所
                 }
             }
         }
@@ -179,12 +178,15 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
         
         // 選択した写真を取得する
-        let image = info[.originalImage] as! UIImage
+        var image = info[.originalImage] as! UIImage
         //画像を出力
         photoImageView.image = image
+
+        //縮小のextention呼び出し
+        image = image.resize(size: CGSize(width: 15, height: 15)) ?? image
         //画像をNSDataに変換
         photo = image.pngData() as NSData?
-        print(photo as Any)
+       // print(photo as Any)
     
     }
 }
