@@ -96,6 +96,10 @@
                                     <segue destination="9yS-FJ-67i" kind="show" identifier="toDiary" id="0sE-mh-XWW"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D33-XR-aW3">
+                                <rect key="frame" x="115" y="392" width="91" height="118"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -116,6 +120,7 @@
                         <outlet property="headerNextBtn" destination="Nru-ab-4Bh" id="xVI-Jf-4c3"/>
                         <outlet property="headerPrevBtn" destination="TAE-6O-d3Z" id="ajN-Ax-Xx7"/>
                         <outlet property="headerTitle" destination="wVi-ek-PHW" id="YdY-sW-lOE"/>
+                        <outlet property="photoImageView" destination="D33-XR-aW3" id="qzs-wG-YgR"/>
                         <outlet property="writeButton" destination="GCl-eG-Ca7" id="TFr-ql-n6b"/>
                     </connections>
                 </viewController>

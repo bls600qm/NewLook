@@ -9,6 +9,7 @@
 
 
 import UIKit
+import RealmSwift
 
 extension UIColor {
     class func lightBlue() -> UIColor {
@@ -41,6 +42,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var calenderHeaderView: UIView! //④
     @IBOutlet weak var calenderCollectionView: UICollectionView!//⑤
 
+    @IBOutlet var photoImageView: UIImageView! //右下の
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,6 +77,31 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             diaryView.date = self.date
         }
     }
+    
+    //Realmから値を読み込む
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue(label: "background").async {
+            let realm = try! Realm()
+            
+            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合
+                
+                let photoData = savedDiary.photo
+                //読み込んだ NSData を UIImage へ変換
+                let img : UIImage! = UIImage(data:photoData! as Data)
+                //imageViewに画像を表示
+                self.photoImageView.image = img
+                    
+                }
+        }
+    }
+        
+    
+    
+    
+    
+    
     //①タップ時
     @IBAction func tappedHeaderPrevBtn(sender: UIButton) {
         selectedDate = dateManager.prevMonth(date: selectedDate as Date) as NSDate
@@ -137,6 +166,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
        
         }
+        
+        
         return cell
     }
     
