@@ -143,14 +143,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if section == 0 {
             return 7
         } else {
-            return dateManager.daysAcquisition() //ここは月によって異なる(後ほど説明します)
+            return dateManager.daysAcquisition()
         }
     }
+    
     //3
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell
      
+        // イメージビューにアクセス
+        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+        imageView.image = UIImage(named:"rika.jpg")
+        
+        
         
         //テキストカラー
         if (indexPath.row % 7 == 0) {
@@ -170,7 +176,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-    // Cell が選択された場合
+    // Cell が選択された場合 //ログに日付返す
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("\(dateManager.conversionDateFormat(indexPath: indexPath))") ///日の数字だけ帰ってくる
         print("\(dateManager.conversionDateFormat(indexPath: indexPath))/\(changeHeaderTitle(date: selectedDate))")
