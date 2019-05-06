@@ -31,7 +31,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
     let margin: CGFloat = 3.0
-
     
     var date: String! = nil
     
@@ -151,6 +150,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell
+     
+        
         //テキストカラー
         if (indexPath.row % 7 == 0) {
             cell.textLabel.textColor = UIColor.lightRed()
@@ -166,10 +167,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
        
         }
-        
-        
         return cell
     }
+    
+    // Cell が選択された場合
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //print("\(dateManager.conversionDateFormat(indexPath: indexPath))") ///日の数字だけ帰ってくる
+        print("\(dateManager.conversionDateFormat(indexPath: indexPath))/\(changeHeaderTitle(date: selectedDate))")
+    }
+    
+    
     
     //セルのサイズを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -202,7 +209,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
         
         //print(formatter.string(from: Date())) //日付ログに出力
-        print("date selected: \(formatter.string(from: Date()))") //日付ログに出力
+        //print("date selected: \(formatter.string(from: Date()))") //日付ログに出力
     
         self.date = formatter.string(from: Date())
 

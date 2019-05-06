@@ -68,7 +68,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Ppf-DR-jDI" customClass="CalendarCell" customModule="NewLook" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="cell" id="Ppf-DR-jDI" customClass="CalendarCell" customModule="NewLook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -79,8 +79,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="xmp-dJ-7LT"/>
-                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="cjS-tJ-nym"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Mwl-4T-Sv8"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cOC-Rf-VYp"/>
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCl-eG-Ca7">
@@ -136,7 +136,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="84.375" y="111.97183098591549"/>
+            <point key="canvasLocation" x="83" y="82"/>
         </scene>
         <!--Diary View Controller-->
         <scene sceneID="qrw-UM-ojR">
