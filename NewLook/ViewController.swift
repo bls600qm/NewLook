@@ -150,14 +150,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //3
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell
-     
+      //  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! CalendarCell //これだけにするとimageView出せる
+        
+        
         // イメージビューにアクセス
-        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+        let imageView =  cell.contentView.viewWithTag(1) as! UIImageView
         imageView.image = UIImage(named:"rika.jpg")
         
-        
-        
+        /*
         //テキストカラー
         if (indexPath.row % 7 == 0) {
             cell.textLabel.textColor = UIColor.lightRed()
@@ -171,9 +173,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.textLabel.text = weekArray[indexPath.row]
         } else {
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
-       
         }
+   */
         return cell
+
     }
     
     // Cell が選択された場合 //ログに日付返す
