@@ -150,16 +150,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //3
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-      //  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! CalendarCell //これだけにするとimageView出せる
-        
-        
-        // イメージビューにアクセス
-        let imageView =  cell.contentView.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(named:"rika.jpg")
-        
-        /*
+        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! CalendarCell //これだけにするとimageView出せる
+    
         //テキストカラー
         if (indexPath.row % 7 == 0) {
             cell.textLabel.textColor = UIColor.lightRed()
@@ -168,13 +162,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             cell.textLabel.textColor = UIColor.gray
         }
+         
         //テキスト配置
         if indexPath.section == 0 {
             cell.textLabel.text = weekArray[indexPath.row]
         } else {
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
         }
-   */
+   
+        cell.imageView.image = UIImage(named: "rika")
         return cell
 
     }
