@@ -31,8 +31,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
     let margin: CGFloat = 3.0
-    
-    var date: String! = nil
+
+    var date: String!
+    var photo: UIImageView! //?
+    var photos: [[UIImageView: Any]] = [] //?
     
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
@@ -55,7 +57,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //collectionViewの大きさ
         calenderCollectionView.frame = CGRect(x:0, y:barHeight + 50, width:width, height:height - barHeight - 180)
-        calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")
+        calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")// セルの再利用のための設定
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
 //        calenderCollectionView.backgroundColor = UIColor.white
@@ -84,22 +86,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         DispatchQueue(label: "background").async {
             let realm = try! Realm()
             
+            //realm.objects(Diary.self) Diaryオブジェクト全て読み込み そのあとフィルター
             if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合
-                
+        
                 let photoData = savedDiary.photo
                 //読み込んだ NSData を UIImage へ変換
                 let img : UIImage! = UIImage(data:photoData! as Data)
-                //imageViewに画像を表示
+                 //imageViewに画像を表示
                 self.photoImageView.image = img
-                    
-                }
+                
+            /*
+            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'") {
+                let photoData = savedDiary.photo
+                //読み込んだ NSData を UIImage へ変換
+                let img = UIImage(data:photoData! as Data)
+                self.photos = photos
+            */
+            }
         }
     }
-        
-    
-    
-    
-    
     
     //①タップ時
     @IBAction func tappedHeaderPrevBtn(sender: UIButton) {
@@ -137,7 +142,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-    //2
+    //2 // cellの数を返す関数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Section毎にCellの総数を変える.
         if section == 0 {
@@ -147,13 +152,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    //3
+    //3 // cellに情報を入れていく関数
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
         
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! CalendarCell //これだけにするとimageView出せる
+       // let photo = img[indexPath.row]
     
+        //セルに画像表示 宣言はCalendarCellにある
+        //cell.imageView.image = UIImage(named: "rika")
+        cell.imageView.image = self.photoImageView.image
+        
+        
+        
         //テキストカラー
         if (indexPath.row % 7 == 0) {
             cell.textLabel.textColor = UIColor.lightRed()
@@ -169,19 +180,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
         }
-   
-        cell.imageView.image = UIImage(named: "rika")
+    
         return cell
 
     }
     
-    // Cell が選択された場合 //ログに日付返す
+    // cell選択時に呼ばれる関数 //ログに日付返す
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("\(dateManager.conversionDateFormat(indexPath: indexPath))") ///日の数字だけ帰ってくる
-        print("\(dateManager.conversionDateFormat(indexPath: indexPath))/\(changeHeaderTitle(date: selectedDate))")
+        print("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+        
+        date = "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))"
+       
     }
-    
-    
     
     //セルのサイズを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -208,13 +219,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //headerの月を変更
     func changeHeaderTitle(date: NSDate) -> String {
         let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "M/yyyy"
+        formatter.dateFormat = "yyyy/MM"
         let selectMonth = formatter.string(from: date as Date)
         
         formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
-        
-        //print(formatter.string(from: Date())) //日付ログに出力
-        //print("date selected: \(formatter.string(from: Date()))") //日付ログに出力
     
         self.date = formatter.string(from: Date())
 
