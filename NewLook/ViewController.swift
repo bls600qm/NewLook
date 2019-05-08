@@ -33,8 +33,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let margin: CGFloat = 3.0
 
     var date: String!
-    var photo: UIImageView! //?
-    var photos: [[UIImageView: Any]] = [] //?
+    var photos: [UIImageView] = []
+    
     
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
@@ -91,18 +91,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
                 let photoData = savedDiary.photo
                 //読み込んだ NSData を UIImage へ変換
-                let img : UIImage! = UIImage(data:photoData! as Data)
+                let img: UIImage! = UIImage(data:photoData! as Data)
                  //imageViewに画像を表示
                 self.photoImageView.image = img
-                
-            /*
-            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'") {
-                let photoData = savedDiary.photo
-                //読み込んだ NSData を UIImage へ変換
-                let img = UIImage(data:photoData! as Data)
-                self.photos = photos
-            */
             }
+            
+            /*
+            let savedDiary = realm.objects(Diary.self)
+                
+               // let photos.append(savedDiary.photo)
+                //読み込んだ NSData を UIImage へ変換
+                let img: UIImage! = UIImage(data:photoData! as Data)
+                //imageViewに画像を表示
+                self.photoImageView.image = img
+            */
         }
     }
     
@@ -157,8 +159,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
         
-       // let photo = img[indexPath.row]
-    
+      
         //セルに画像表示 宣言はCalendarCellにある
         //cell.imageView.image = UIImage(named: "rika")
         cell.imageView.image = self.photoImageView.image
