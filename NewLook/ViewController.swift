@@ -26,8 +26,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let dateManager = DateManager()
     let daysPerWeek: Int = 7
     let cellMargin: CGFloat = 2.0 //セルの余白
-    var selectedDate = NSDate()
-    var today: NSDate!
+    var selectedDate = NSDate() //今日の日付
+    //var today: NSDate!
+    var today: String!
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
     let margin: CGFloat = 3.0
@@ -35,6 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var date: String!
     var photos: [UIImageView] = []
     
+    var todayPath: Int!
     
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
@@ -162,7 +164,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
       
         //セルに画像表示 宣言はCalendarCellにある
         //cell.imageView.image = UIImage(named: "rika")
-        cell.imageView.image = self.photoImageView.image
+       // cell.imageView.image = self.photoImageView.image
         
         
         
@@ -181,7 +183,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
         }
-    
+        
+        //今日の日付のindexPathをとってる
+        if "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" == "\(date as String)" {
+            print(indexPath.row)
+            
+            todayPath = indexPath.row
+        }
+        
+       
+        
+        if indexPath.row == todayPath{
+            cell.imageView.image = self.photoImageView.image
+        }
+        
+        
+       
+        
         return cell
 
     }
@@ -190,8 +208,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("\(dateManager.conversionDateFormat(indexPath: indexPath))") ///日の数字だけ帰ってくる
         print("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+        print(indexPath)
         
-        date = "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))"
        
     }
     
@@ -221,12 +239,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func changeHeaderTitle(date: NSDate) -> String {
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM"
+        
         let selectMonth = formatter.string(from: date as Date)
         
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/d", options: 0, locale: Locale(identifier: "ja_JP"))
     
         self.date = formatter.string(from: Date())
-
+    
+       // print(formatter.string(from: Date())) //今日の日付を表示する
+        
         return selectMonth
     }
 
