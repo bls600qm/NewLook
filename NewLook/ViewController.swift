@@ -89,15 +89,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let realm = try! Realm()
             
             //realm.objects(Diary.self) Diaryオブジェクト全て読み込み そのあとフィルター
-            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合
-        
-                let photoData = savedDiary.photo
+//            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").first { //nilじゃない場合 1日やから.firstでもlastでもいいっぽい
+//
+//                let photoData = savedDiary.photo
+//                //読み込んだ NSData を UIImage へ変換
+//                let img: UIImage! = UIImage(data:photoData! as Data)
+//                 //imageViewに画像を表示
+//                self.photoImageView.image = img
+//            }
+           
+            //るーぷ？
+            let savedDiary = realm.objects(Diary.self)
+            for diary in savedDiary{
+                let photoData = diary.photo
                 //読み込んだ NSData を UIImage へ変換
                 let img: UIImage! = UIImage(data:photoData! as Data)
-                 //imageViewに画像を表示
+                //imageViewに画像を表示
                 self.photoImageView.image = img
+                
+                
             }
-        
+            
         }
     }
     
@@ -182,17 +194,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             print("indexPath.row:\(indexPath.row)")
             
             todayPath = indexPath.row
+            
+            if indexPath.row == todayPath{
+                cell.imageView.image = self.photoImageView.image
+            }
+            
         }
-        
-       
-        
-        if indexPath.row == todayPath{
-            cell.imageView.image = self.photoImageView.image
-        }
-        
-        
-       
-        
         return cell
 
     }
