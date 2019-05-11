@@ -97,16 +97,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                  //imageViewに画像を表示
                 self.photoImageView.image = img
             }
-            
-            /*
-            let savedDiary = realm.objects(Diary.self)
-                
-               // let photos.append(savedDiary.photo)
-                //読み込んだ NSData を UIImage へ変換
-                let img: UIImage! = UIImage(data:photoData! as Data)
-                //imageViewに画像を表示
-                self.photoImageView.image = img
-            */
+        
         }
     }
     
@@ -186,7 +177,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //今日の日付のindexPathをとってる
         if "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" == "\(date as String)" {
-            print(indexPath.row)
+            print("changeHeaderTitle:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+            print("date as String:\(date as String)")
+            print("indexPath.row:\(indexPath.row)")
             
             todayPath = indexPath.row
         }
@@ -207,8 +200,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // cell選択時に呼ばれる関数 //ログに日付返す
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("\(dateManager.conversionDateFormat(indexPath: indexPath))") ///日の数字だけ帰ってくる
-        print("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
-        print(indexPath)
+        print("押された日:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+        print("押されたパス\(indexPath)")
         
        
     }
@@ -242,11 +235,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let selectMonth = formatter.string(from: date as Date)
         
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/d", options: 0, locale: Locale(identifier: "ja_JP"))
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
     
         self.date = formatter.string(from: Date())
     
-       // print(formatter.string(from: Date())) //今日の日付を表示する
+        //print("今日の日付:\(formatter.string(from: Date()))")
         
         return selectMonth
     }
