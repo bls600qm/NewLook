@@ -34,9 +34,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let margin: CGFloat = 3.0
 
     var date: String!
-    var photos: [UIImageView] = []
+   // var photos: [UIImageView] = []
+    var photos: NSData!
+    var context: String!
     
-    var todayPath: Int!
+    var Path: Int!
     
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
@@ -85,10 +87,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue(label: "background").async {
-            let realm = try! Realm()
+       // DispatchQueue(label: "background").async { //?いる？
+          //  let realm = try! Realm()
             
-            //realm.objects(Diary.self) Diaryオブジェクト全て読み込み そのあとフィルター
+           // realm.objects(Diary.self) Diaryオブジェクト全て読み込み そのあとフィルター
 //            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").first { //nilじゃない場合 1日やから.firstでもlastでもいいっぽい
 //
 //                let photoData = savedDiary.photo
@@ -96,21 +98,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //                let img: UIImage! = UIImage(data:photoData! as Data)
 //                 //imageViewに画像を表示
 //                self.photoImageView.image = img
+//
 //            }
-           
-            //るーぷ？
-            let savedDiary = realm.objects(Diary.self)
-            for diary in savedDiary{
-                let photoData = diary.photo
-                //読み込んだ NSData を UIImage へ変換
-                let img: UIImage! = UIImage(data:photoData! as Data)
-                //imageViewに画像を表示
-                self.photoImageView.image = img
-                
-                
-            }
+        
+//            //るーぷ？
+//            let savedDiary = realm.objects(Diary.self)
+//            for diary in savedDiary{
+//                let photoData = diary.photo
+//                //読み込んだ NSData を UIImage へ変換
+//                let img: UIImage! = UIImage(data:photoData! as Data)
+//                //imageViewに画像を表示
+//                self.photoImageView.image = img
+//
+//
+//            }
             
-        }
+       // }
     }
     
     //①タップ時
@@ -164,11 +167,39 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
         
-      
-        //セルに画像表示 宣言はCalendarCellにある
-        //cell.imageView.image = UIImage(named: "rika")
-       // cell.imageView.image = self.photoImageView.image
+        let realm = try! Realm()
+        let savedDiary = realm.objects(Diary.self)
         
+        for diary in savedDiary{
+            let photoData = diary.photo
+            let date = diary.date
+            let context = diary.context
+            var dictionary : Dictionary = ["photoData":photoData, "date":date, "context":context] as [String : Any]
+            
+            //今日の日付のindexPathをとってる
+            if "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" == "\(dictionary["date"]!)" {
+                
+                Path = indexPath.row
+                
+                if indexPath.row == Path {
+                    //読み込んだ NSData を UIImage へ変換
+                    let img: UIImage! = dictionary["photoData"] as? UIImage
+                    //imageViewに画像を表示
+                    cell.imageView.image = img
+                    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                }
+                
+            }else {
+                print("changeHeaderTitle:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+                print("dictionary:\(dictionary["date"]!)")
+                print("indexPath.row:\(indexPath.row)")
+            }
+            
+        }
+        //読み込んだ NSData を UIImage へ変換
+        // let img: UIImage! = UIImage(data:photoData! as Data)
+        //imageViewに画像を表示
+        //self.photoImageView.image = img
         
         
         //テキストカラー
@@ -187,19 +218,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
         }
         
-        //今日の日付のindexPathをとってる
-        if "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" == "\(date as String)" {
-            print("changeHeaderTitle:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
-            print("date as String:\(date as String)")
-            print("indexPath.row:\(indexPath.row)")
-            
-            todayPath = indexPath.row
-            
-            if indexPath.row == todayPath{
-                cell.imageView.image = self.photoImageView.image
-            }
-            
-        }
+//        //今日の日付のindexPathをとってる
+//        if "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" == "\(date as String)" {
+//            print("changeHeaderTitle:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+//            print("date as String:\(date as String)")
+//            print("indexPath.row:\(indexPath.row)")
+//
+//            //todayPath = indexPath.row
+//
+////            if indexPath.row == todayPath{
+////                cell.imageView.image = self.photoImageView.image
+////                print("a")
+////            }
+//
+//
+//        }
+        
         return cell
 
     }
