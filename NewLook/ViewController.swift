@@ -40,6 +40,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var Path: Int!
     
+    var diarys: [(photo: NSData, date: String, context: String )] = []
+    
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
     @IBOutlet weak var headerNextBtn: UIButton!//②
@@ -171,28 +173,43 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let savedDiary = realm.objects(Diary.self)
         
         for diary in savedDiary{
-            let photoData = diary.photo
-            let date = diary.date
-            let context = diary.context
-            var dictionary : Dictionary = ["photoData":photoData, "date":date, "context":context] as [String : Any]
+            //let photoData = diary.photo
+            //let context = diary.context
+            //var dictionary : Dictionary = ["photoData":photoData, "date":date, "context":context] as [String : Any]
             
+            let element = (photo: diary.photo, date: diary.date, context: diary.context ) //タプル
+            diarys.append(element as! (photo: NSData, date: String, context: String))
+            
+            //print(diarys[0].date)
             //今日の日付のindexPathをとってる
-            if "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" == "\(dictionary["date"]!)" {
+           // if "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" == "\(dictionary["date"]!)" {
+            //if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (diarys[0].date) {
+            if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date) {
+                
+                print("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+                print(element.date)
+                print("日付の一致を発見！")
                 
                 Path = indexPath.row
                 
+                print("その日のパス:\(Path)")
+                
                 if indexPath.row == Path {
                     //読み込んだ NSData を UIImage へ変換
-                    let img: UIImage! = dictionary["photoData"] as? UIImage
+                  //  let img: UIImage! = dictionary["photoData"] as? UIImage
                     //imageViewに画像を表示
-                    cell.imageView.image = img
-                    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                    //cell.imageView.image = img
+                    
+                    let comment: String! = element.context
+                    print("コメント表示:\(String(describing: comment))")
+                    
                 }
                 
             }else {
-                print("changeHeaderTitle:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
-                print("dictionary:\(dictionary["date"]!)")
-                print("indexPath.row:\(indexPath.row)")
+                print("else")
+               // print("changeHeaderTitle:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+               // print("dictionary:\(dictionary["date"]!)")
+              //  print("indexPath.row:\(indexPath.row)")
             }
             
         }
