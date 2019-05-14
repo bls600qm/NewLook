@@ -201,7 +201,7 @@
                     <connections>
                         <outlet property="contextTextField" destination="u4U-z9-lKo" id="N1P-3y-GNI"/>
                         <outlet property="dateLabel" destination="63d-py-9Sp" id="0Ip-JQ-hst"/>
-                        <outlet property="photoImageView" destination="IqW-wT-B4h" id="lt7-cc-D6a"/>
+                        <outlet property="photoImageView" destination="IqW-wT-B4h" id="MRf-Il-Vws"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ZB-ic-OIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

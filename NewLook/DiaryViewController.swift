@@ -130,6 +130,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let cancel = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             print("キャンセルをタップした時の処理")
+            self.dismiss(animated: true, completion: nil)
         })
         
         actionSheet.addAction(action1)

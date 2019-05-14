@@ -143,6 +143,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         selectedDate = dateManager.nextMonth(date: selectedDate as Date) as NSDate
         calenderCollectionView.reloadData()
         headerTitle.text = changeHeaderTitle(date: selectedDate)
+        print(changeHeaderTitle(date: selectedDate)) //2019/06
+        print(selectedDate) //2019-06-14 04:40:21 +0000
     }
     
     //かくボタン押したとき
@@ -172,6 +174,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let realm = try! Realm()
         let savedDiary = realm.objects(Diary.self)
         
+        if "\(changeHeaderTitle(date: selectedDate))/1" == "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" {
+            print("月/1:\(changeHeaderTitle(date: selectedDate))/1")
+            print("月:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+            
+            
+        }
+        
         for diary in savedDiary{
             
             let element = (photo: diary.photo, date: diary.date, context: diary.context ) //タプル
@@ -181,7 +190,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 print("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
                 print(element.date)
-                print(element.photo)
+               // print(element.photo)
                 print("日付の一致を発見！")
                 
                 Path = indexPath.row
@@ -204,19 +213,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     print("Path:\(Path)")
                     
                     
+                    
                     let comment: String! = element.context
                     print("コメント表示:\(String(describing: comment))")
                     
                 }
-                
             }
         }
-        //読み込んだ NSData を UIImage へ変換
-        // let img: UIImage! = UIImage(data:photoData! as Data)
-        //imageViewに画像を表示
-        //self.photoImageView.image = img
-        
-        
         //テキストカラー
         if (indexPath.row % 7 == 0) {
             cell.textLabel.textColor = UIColor.lightRed()
@@ -233,25 +236,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
         }
         
-//        //今日の日付のindexPathをとってる
-//        if "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" == "\(date as String)" {
-//            print("changeHeaderTitle:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
-//            print("date as String:\(date as String)")
-//            print("indexPath.row:\(indexPath.row)")
-//
-//            //todayPath = indexPath.row
-//
-////            if indexPath.row == todayPath{
-////                cell.imageView.image = self.photoImageView.image
-////                print("a")
-////            }
-//
-//
-//        }
-        
+
         return cell
 
     }
+
     
     // cell選択時に呼ばれる関数 //ログに日付返す
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -291,11 +280,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let selectMonth = formatter.string(from: date as Date)
         
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/d", options: 0, locale: Locale(identifier: "ja_JP"))
     
         self.date = formatter.string(from: Date())
     
         //print("今日の日付:\(formatter.string(from: Date()))")
+        
+        
         
         return selectMonth
     }
