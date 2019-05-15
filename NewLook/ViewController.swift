@@ -89,6 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        calenderCollectionView.reloadData()  //今日の画像更新するように追加した
        // DispatchQueue(label: "background").async { //?いる？
           //  let realm = try! Realm()
             
@@ -143,8 +144,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         selectedDate = dateManager.nextMonth(date: selectedDate as Date) as NSDate
         calenderCollectionView.reloadData()
         headerTitle.text = changeHeaderTitle(date: selectedDate)
-        print(changeHeaderTitle(date: selectedDate)) //2019/06
-        print(selectedDate) //2019-06-14 04:40:21 +0000
+       
     }
     
     //かくボタン押したとき
@@ -171,15 +171,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
         
+        //テキストカラー
+        if (indexPath.row % 7 == 0) {
+            cell.textLabel.textColor = UIColor.lightRed()
+        } else if (indexPath.row % 7 == 6) {
+            cell.textLabel.textColor = UIColor.lightBlue()
+        } else {
+            cell.textLabel.textColor = UIColor.gray
+        }
+        
+        //テキスト配置
+        if indexPath.section == 0 {
+            cell.textLabel.text = weekArray[indexPath.row]
+        } else {
+            cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
+        }
+        
+
+        
         let realm = try! Realm()
         let savedDiary = realm.objects(Diary.self)
-        
-        if "\(changeHeaderTitle(date: selectedDate))/1" == "\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))" {
-            print("月/1:\(changeHeaderTitle(date: selectedDate))/1")
-            print("月:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
-            
-            
-        }
         
         for diary in savedDiary{
             
@@ -201,8 +212,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 if indexPath.row == Path {
                     //読み込んだ NSData を UIImage へ変換
-                    //let img: UIImage! = element.photo as? UIImage //データnilになる
-                
                     let img: UIImage? = UIImage(data: element.photo as! Data)
                     print(img)
                 
@@ -212,31 +221,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     print("indexPath.row:\(indexPath.row)")
                     print("Path:\(Path)")
                     
-                    
-                    
                     let comment: String! = element.context
                     print("コメント表示:\(String(describing: comment))")
-                    
+                   
+                    return cell // 合致するものがあれば，それ以降の保存データと比べないように *
                 }
+            }else{
+                cell.imageView.image = nil //他の月に画像が表示されないように *
+                print("else:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+                print("else:\(element.date)")
             }
         }
-        //テキストカラー
-        if (indexPath.row % 7 == 0) {
-            cell.textLabel.textColor = UIColor.lightRed()
-        } else if (indexPath.row % 7 == 6) {
-            cell.textLabel.textColor = UIColor.lightBlue()
-        } else {
-            cell.textLabel.textColor = UIColor.gray
-        }
-         
-        //テキスト配置
-        if indexPath.section == 0 {
-            cell.textLabel.text = weekArray[indexPath.row]
-        } else {
-            cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
-        }
         
-
         return cell
 
     }
@@ -286,7 +282,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
         //print("今日の日付:\(formatter.string(from: Date()))")
         
-        
+        //print(selectMonth)
         
         return selectMonth
     }
