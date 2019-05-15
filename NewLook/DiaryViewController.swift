@@ -51,36 +51,16 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         dateLabel.text = date
         
-        
-        DispatchQueue(label: "background").async {
-            let realm = try! Realm()
+        let realm = try! Realm()
             
-            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合 //今日のやつ
-                
-               // let context = savedDiary.context
-               // let photoData = savedDiary.photo
-                
-               // if let photoData = realm.objects(Diary.self).filter("photo == '\(self.photo!)'").last {
-                
-                 //すでに値が入ってたらけしちゃう！
-                    try! realm.write {
-                       realm.delete(savedDiary)
-                    }
-               // }
-
-                // 読み込んだ NSData を UIImage へ変換
-              //  let img : UIImage! = UIImage(data:photoData! as Data)
-                
-                DispatchQueue.main.async {
-              //      self.contextTextField.text = context
-                    //imageViewに画像を表示
-                //self.photoImageView.image = img
-
-                }
+        if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合 //今日のやつ
+        //すでに値が入ってたらけしちゃう！
+            try! realm.write {
+                realm.delete(savedDiary)
             }
         }
-        
     }
+
     
     @IBAction func saveButtonPushed(_ sender: UIButton) {
         

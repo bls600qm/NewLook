@@ -42,6 +42,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var diarys: [(photo: NSData, date: String, context: String )] = []
     
+    var img: UIImage? = nil
+    var selectedImage : UIImage?
+
+    
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
     @IBOutlet weak var headerNextBtn: UIButton!//②
@@ -82,6 +86,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if (segue.identifier == "toDiary") {
             let diaryView = segue.destination as! DiaryViewController
             diaryView.date = self.date
+        }
+        if (segue.identifier == "toSubViewController") {
+            let subVC: SubViewController = (segue.destination as? SubViewController)!
+            subVC.selectedImg = selectedImage // SubViewController のselectedImgに選択された画像を設定する
         }
     }
     
@@ -212,7 +220,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 if indexPath.row == Path {
                     //読み込んだ NSData を UIImage へ変換
-                    let img: UIImage? = UIImage(data: element.photo as! Data)
+                    img = UIImage(data: element.photo! as Data)
                     print(img)
                 
                     //imageViewに画像を表示
@@ -242,7 +250,33 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("\(dateManager.conversionDateFormat(indexPath: indexPath))") ///日の数字だけ帰ってくる
         print("押された日:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
-        print("押されたパス\(indexPath)")
+        print("押されたパス\(indexPath.row)")
+        
+        
+        let realm = try! Realm()
+        let savedDiary = realm.objects(Diary.self)
+        
+        for diary in savedDiary{
+            
+            let element = (photo: diary.photo, date: diary.date, context: diary.context ) //タプル
+            diarys.append(element as! (photo: NSData, date: String, context: String))
+            
+            if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date){
+                print("選択した日に保存データあり")
+                selectedImage = UIImage(data: element.photo! as Data)
+                
+                if selectedImage != nil {
+                    print(selectedImage)
+                    // SubViewController へ遷移するために Segue を呼び出す
+                    performSegue(withIdentifier: "toSubViewController",sender: nil)
+                }
+                
+            }else {
+                print("データ無い or 不一致")
+            }
+        }
+        
+        
         
        
     }
@@ -251,7 +285,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfMargin: CGFloat = 8.0
         let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
-        let height: CGFloat = width * 1.3 //セルの縦幅
+        let height: CGFloat = width * 1.4 //セルの縦幅
         return CGSizeMake(width, height)
     }
     

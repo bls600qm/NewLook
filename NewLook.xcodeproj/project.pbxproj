@@ -10,6 +10,7 @@
 		410C25D8B8588AF1903363CA /* Pods_NewLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EE120AC2FC46CD75612C1D /* Pods_NewLook.framework */; };
 		970A3FF32276A36D00598AC3 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A3FF22276A36D00598AC3 /* DiaryViewController.swift */; };
 		972F6D80227549760017B3C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 972F6D7F227549760017B3C0 /* Main.storyboard */; };
+		97721CC2228C2B8600001962 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97721CC1228C2B8600001962 /* SubViewController.swift */; };
 		9798C47122769C4B00EFBD43 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798C47022769C4B00EFBD43 /* Diary.swift */; };
 		97CD40F3226323D7000877DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD40F2226323D7000877DA /* AppDelegate.swift */; };
 		97CD40F5226323D7000877DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD40F4226323D7000877DA /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		7CF538120CBDA160D53E928F /* Pods-NewLook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewLook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewLook/Pods-NewLook.debug.xcconfig"; sourceTree = "<group>"; };
 		970A3FF22276A36D00598AC3 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		972F6D7F227549760017B3C0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		97721CC1228C2B8600001962 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		9798C47022769C4B00EFBD43 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		97CD40EF226323D6000877DA /* NewLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97CD40F2226323D7000877DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				97EC0695226DC6EC0021DD29 /* DateManager.swift */,
 				97CD40F2226323D7000877DA /* AppDelegate.swift */,
 				97CD40F4226323D7000877DA /* ViewController.swift */,
+				97721CC1228C2B8600001962 /* SubViewController.swift */,
 				972F6D7F227549760017B3C0 /* Main.storyboard */,
 				97CD40F9226323D7000877DA /* Assets.xcassets */,
 				97CD40FB226323D7000877DA /* LaunchScreen.storyboard */,
@@ -216,6 +219,7 @@
 			files = (
 				97CD40F5226323D7000877DA /* ViewController.swift in Sources */,
 				9798C47122769C4B00EFBD43 /* Diary.swift in Sources */,
+				97721CC2228C2B8600001962 /* SubViewController.swift in Sources */,
 				97EC0696226DC6EC0021DD29 /* DateManager.swift in Sources */,
 				97CD40F3226323D7000877DA /* AppDelegate.swift in Sources */,
 				970A3FF32276A36D00598AC3 /* DiaryViewController.swift in Sources */,
