@@ -67,7 +67,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         layout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
         
         //collectionViewの大きさ
-        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 60, width:width, height:height - barHeight - 140)
+        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 60, width:width, height:height - barHeight - 120)
         calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")// セルの再利用のための設定
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
@@ -205,7 +205,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         for diary in savedDiary{
             
             let element = (photo: diary.photo, date: diary.date, context: diary.context ) //タプル
-            diarys.append(element as! (photo: NSData, date: String, context: String))
+            if element == nil {
+                diarys.append(element as! (photo: NSData, date: String, context: String))
+            }else{
+                print("nilです")
+                //return cell //?
+            }
+            
             
             if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date) {
                 
