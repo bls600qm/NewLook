@@ -10,20 +10,29 @@ import UIKit
 
 class SubViewController: UIViewController{
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var commentLabel: UILabel!
+    @IBOutlet var rerutnButton: UIButton!
     
-    var selectedImg: UIImage!
+    var Img: UIImage!
+    var Comment: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = selectedImg
+        imageView.image = Img
+        commentLabel.text = Comment
        
         imageView.contentMode = UIView.ContentMode.scaleAspectFit //画像のアスペクト比を維持しUIImageViewサイズに収まるように表示
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func returnButton(sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 }

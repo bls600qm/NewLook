@@ -43,7 +43,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var diarys: [(photo: NSData, date: String, context: String )] = []
     
     var img: UIImage? = nil
-    var selectedImage : UIImage?
+    var selectedImage: UIImage?
+    var selectedComment: String?
 
     
     @IBOutlet weak var writeButton: UIButton!
@@ -89,7 +90,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         if (segue.identifier == "toSubViewController") {
             let subVC: SubViewController = (segue.destination as? SubViewController)!
-            subVC.selectedImg = selectedImage // SubViewController のselectedImgに選択された画像を設定する
+            subVC.Img = selectedImage // SubViewController のselectedImgに選択された画像を設定する
+            subVC.Comment = selectedComment //値を渡す
         }
     }
     
@@ -264,9 +266,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date){
                 print("選択した日に保存データあり")
                 selectedImage = UIImage(data: element.photo! as Data)
+                selectedComment = element.context
                 
                 if selectedImage != nil {
                     print(selectedImage)
+                    print(selectedComment)
                     // SubViewController へ遷移するために Segue を呼び出す
                     performSegue(withIdentifier: "toSubViewController",sender: nil)
                 }
