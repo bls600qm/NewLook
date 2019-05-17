@@ -67,7 +67,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         layout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
         
         //collectionViewの大きさ
-        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 50, width:width, height:height - barHeight - 180)
+        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 60, width:width, height:height - barHeight - 140)
         calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")// セルの再利用のための設定
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
@@ -289,7 +289,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfMargin: CGFloat = 8.0
         let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
-        let height: CGFloat = width * 1.4 //セルの縦幅
+        let height: CGFloat = width * 1.6 //セルの縦幅
         return CGSizeMake(width, height)
     }
     

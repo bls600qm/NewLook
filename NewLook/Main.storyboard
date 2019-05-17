@@ -60,7 +60,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cf0-9r-ZbB">
                                 <rect key="frame" x="16" y="77" width="288" height="245"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3rz-om-D3w">
                                     <size key="itemSize" width="110" height="110"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -90,7 +90,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCl-eG-Ca7">
-                                <rect key="frame" x="110" y="491" width="101" height="57"/>
+                                <rect key="frame" x="110" y="509" width="101" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.68415698879999998" green="1" blue="0.93322663390000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
@@ -102,12 +102,8 @@
                                     <segue destination="9yS-FJ-67i" kind="show" identifier="toDiary" id="0sE-mh-XWW"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D33-XR-aW3">
-                                <rect key="frame" x="240" y="494" width="56" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="G95-Pr-SEI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TEX-OE-aJu"/>
@@ -126,7 +122,6 @@
                         <outlet property="headerNextBtn" destination="Nru-ab-4Bh" id="xVI-Jf-4c3"/>
                         <outlet property="headerPrevBtn" destination="TAE-6O-d3Z" id="ajN-Ax-Xx7"/>
                         <outlet property="headerTitle" destination="wVi-ek-PHW" id="YdY-sW-lOE"/>
-                        <outlet property="photoImageView" destination="D33-XR-aW3" id="qzs-wG-YgR"/>
                         <outlet property="writeButton" destination="GCl-eG-Ca7" id="TFr-ql-n6b"/>
                         <segue destination="gJb-qK-LnM" kind="show" identifier="toSubViewController" id="2Fq-uA-Kdw"/>
                     </connections>
