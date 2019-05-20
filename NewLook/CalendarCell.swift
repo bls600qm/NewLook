@@ -34,7 +34,8 @@ class CalendarCell: UICollectionViewCell {
     override init(frame:CGRect){
         super.init(frame:frame)
         
-        self.backgroundColor = UIColor(hex: "FFFDF")
+        //self.backgroundColor = UIColor(hex: "FFFDF")
+        self.backgroundColor = UIColor.white
         
         //UILabelを生成
         textLabel = UILabel()

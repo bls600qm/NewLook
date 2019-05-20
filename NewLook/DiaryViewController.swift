@@ -75,9 +75,14 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         diary.photo = photo
         
         //STEP.3 Realmに書き込み
-        try! realm.write {
-            realm.add(diary, update: true)
+        if diary.photo != nil{
+            try! realm.write {
+                realm.add(diary, update: true)
+            }
+        } else {
+            self.dismiss(animated: true, completion: nil)
         }
+        
         
         //画面遷移して前の画面に戻る
         self.dismiss(animated: true, completion: nil)

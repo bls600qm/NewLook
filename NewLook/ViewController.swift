@@ -19,6 +19,10 @@ extension UIColor {
     class func lightRed() -> UIColor {
         return UIColor(red: 195.0 / 255, green: 123.0 / 255, blue: 175.0 / 255, alpha: 1.0)
     }
+    
+    class func lightPurple() -> UIColor {
+        return UIColor(red: 0.8118, green: 0.2235, blue: 0.4353, alpha: 1.0)
+    }
 }
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -67,15 +71,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         layout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
         
         //collectionViewの大きさ
-        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 60, width:width, height:height - barHeight - 120)
+        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 50, width:width, height:height - barHeight - 120)
         calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")// セルの再利用のための設定
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
-//        calenderCollectionView.backgroundColor = UIColor.white
-        headerTitle.text = changeHeaderTitle(date: selectedDate) //追記
-
+        
+        calenderHeaderView.backgroundColor = UIColor.black //ヘッダーの色
+        headerTitle.text = changeHeaderTitle(date: selectedDate)
+        headerTitle.textColor = UIColor.lightPurple()
         self.view.addSubview(calenderCollectionView)
-     
+
 
     }
     override func didReceiveMemoryWarning() {
@@ -128,7 +133,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
        // }
     }
-    
+
     //①タップ時
     @IBAction func tappedHeaderPrevBtn(sender: UIButton) {
         selectedDate = dateManager.prevMonth(date: selectedDate as Date) as NSDate
@@ -193,6 +198,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //テキスト配置
         if indexPath.section == 0 {
             cell.textLabel.text = weekArray[indexPath.row]
+            //cell.backgroundColor = UIColor.white
+            //cell.textLabel.textAlignment = .center
+            //cell.textLabel.frame = CGRect(x:0,y:0,width:50,height:100) //何も書かずに保存した時に崩れる
         } else {
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
         }
@@ -208,7 +216,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if element == nil {
                 diarys.append(element as! (photo: NSData, date: String, context: String))
             }else{
-                print("nilです")
+                //print("nilです")
                 //return cell //?
             }
             
@@ -260,6 +268,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         print("押された日:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
         print("押されたパス\(indexPath.row)")
         
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell
         
         let realm = try! Realm()
         let savedDiary = realm.objects(Diary.self)
@@ -274,7 +283,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 selectedImage = UIImage(data: element.photo! as Data)
                 selectedComment = element.context
                 
-                if selectedImage != nil {
+                if let selectedImage = UIImage(data: element.photo! as Data) {
                     print(selectedImage)
                     print(selectedComment)
                     // SubViewController へ遷移するために Segue を呼び出す
