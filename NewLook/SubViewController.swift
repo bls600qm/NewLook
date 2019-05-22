@@ -13,9 +13,11 @@ class SubViewController: UIViewController{
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var commentLabel: UILabel!
     @IBOutlet var rerutnButton: UIButton!
+    @IBOutlet var dateLabel: UILabel!
     
     var Img: UIImage!
     var Comment: String!
+    var Date: String!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
@@ -26,9 +28,9 @@ class SubViewController: UIViewController{
         
         imageView.image = Img
         commentLabel.text = Comment
-        //imageView.contentMode = UIView.ContentMode.scaleAspectFit //画像のアスペクト比を維持しUIImageViewサイズに収まるように表示
-        
-        
+        dateLabel.text = Date
+       
+       
     }
     
     override func didReceiveMemoryWarning() {

@@ -11,13 +11,13 @@ import RealmSwift
 
 
 
-class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
 
     var date: String!
     var photo: NSData!
     
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var contextTextView: UITextView!
+    @IBOutlet var contextTextField: UITextField!
     @IBOutlet var photoImageView: UIImageView!
     
     
@@ -27,6 +27,9 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.contextTextField.delegate = self //閉じない
+        contextTextField.delegate = self
         
         //グラデーションの開始色
         let topColor = UIColor(red: 0.8118, green: 0.2235, blue: 0.4353, alpha: 1.0) /* #cf396f */
@@ -49,7 +52,6 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         // 枠のカラー
         photoImageView.layer.borderColor = UIColor.white.cgColor
-        
         // 枠の幅
         photoImageView.layer.borderWidth = 3.0
         
@@ -60,6 +62,11 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        contextTextField.resignFirstResponder()
+        return true
+    }
+    
     //Realmから値を読み込む
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,13 +74,14 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         dateLabel.text = date
         
 //        let realm = try! Realm()
-//            
+
 //        if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合 //今日のやつ
-//        //すでに値が入ってたらけしちゃう！
+//            //すでに値が入ってたらけしちゃう！
 //            try! realm.write {
 //                realm.delete(savedDiary)
 //            }
 //        }
+        
     }
 
     
@@ -83,10 +91,17 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
+//        if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合 //今日のやつ
+//            //すでに値が入ってたらけしちゃう！
+//            try! realm.write {
+//                realm.delete(savedDiary)
+//            }
+//        }
+
         //STEP.2 保存する要素を書く
         let diary = Diary()
         diary.date = date
-        diary.context = contextTextView.text!
+        diary.context = contextTextField.text!
         diary.photo = photo
         
         //STEP.3 Realmに書き込み
@@ -103,12 +118,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
         
     }
-    
-    //改行で入力確定
-    @IBAction func memo(_ sender: Any) {
-    }
-    
-    
+
     //カメラの処理
     //アルバムから選択かカメラで撮影かを選択するAlertControllerを出す
     @IBAction func showAlert(_ sender: Any) {

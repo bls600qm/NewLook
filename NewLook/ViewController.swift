@@ -52,7 +52,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var img: UIImage? = nil
     var selectedImage: UIImage?
     var selectedComment: String?
-
+    var selectedDateData: String!
     
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var headerPrevBtn: UIButton!//①
@@ -61,8 +61,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var calenderHeaderView: UIView! //④
     @IBOutlet weak var calenderCollectionView: UICollectionView!//⑤
 
-    @IBOutlet var photoImageView: UIImageView! //右下の
-    
+   
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }//ステータスバーのを白に
@@ -103,6 +102,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let subVC: SubViewController = (segue.destination as? SubViewController)!
             subVC.Img = selectedImage // SubViewController のselectedImgに選択された画像を設定する
             subVC.Comment = selectedComment //値を渡す
+            subVC.Date = selectedDateData
         }
     }
     
@@ -291,10 +291,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 print("選択した日に保存データあり")
                 selectedImage = UIImage(data: element.photo! as Data)
                 selectedComment = element.context
+                selectedDateData = element.date
                 
                 if let selectedImage = UIImage(data: element.photo! as Data) {
                     print(selectedImage)
                     print(selectedComment)
+                    print(selectedDateData)
                     // SubViewController へ遷移するために Segue を呼び出す
                     performSegue(withIdentifier: "toSubViewController",sender: nil)
                 }
