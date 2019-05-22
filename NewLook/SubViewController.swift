@@ -17,6 +17,9 @@ class SubViewController: UIViewController{
     var Img: UIImage!
     var Comment: String!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

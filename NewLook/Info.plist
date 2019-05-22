@@ -40,6 +40,8 @@
 	<string>アルバムへのアクセスを許可</string>
 	<key>NSCameraUsageDescription</key>
 	<string>カメラへのアクセスを許可</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

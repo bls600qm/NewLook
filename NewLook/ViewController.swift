@@ -13,15 +13,18 @@ import RealmSwift
 
 extension UIColor {
     class func lightBlue() -> UIColor {
-        return UIColor(red: 92.0 / 255, green: 192.0 / 255, blue: 210.0 / 255, alpha: 1.0)
+        return UIColor(red:29 / 255, green: 181 / 255, blue: 198 / 255, alpha: 1.0)
     }
 
     class func lightRed() -> UIColor {
-        return UIColor(red: 195.0 / 255, green: 123.0 / 255, blue: 175.0 / 255, alpha: 1.0)
+        return UIColor(red: 233 / 255, green: 38 / 255, blue: 122 / 255, alpha: 1.0)
     }
     
     class func lightPurple() -> UIColor {
         return UIColor(red: 0.8118, green: 0.2235, blue: 0.4353, alpha: 1.0)
+    }
+    class func black() -> UIColor {
+        return UIColor(red: 51.0 / 255, green: 51.0 / 255, blue: 51.0 / 255, alpha: 1.0)
     }
 }
 
@@ -60,25 +63,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet var photoImageView: UIImageView! //右下の
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let barHeight = UIApplication.shared.statusBarFrame.size.height
+        let barHeight = UIApplication.shared.statusBarFrame.size.height //バーの高さを取得
         let width = self.view.frame.width
         let height = self.view.frame.height
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
         
         //collectionViewの大きさ
-        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 50, width:width, height:height - barHeight - 120)
+        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 55, width:width, height:height - barHeight - 120)
         calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")// セルの再利用のための設定
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
         
-        calenderHeaderView.backgroundColor = UIColor.black //ヘッダーの色
+        calenderHeaderView.backgroundColor = UIColor.black() //ヘッダーの色
         headerTitle.text = changeHeaderTitle(date: selectedDate)
-        headerTitle.textColor = UIColor.lightPurple()
+        //headerTitle.textColor = UIColor.lightPurple()
         self.view.addSubview(calenderCollectionView)
 
 
@@ -186,13 +192,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
         
+        
+        //cell.textLabel.font = UIFont(name: "Avenir Next Demi Bold 23.0", size: 20)
+        
         //テキストカラー
         if (indexPath.row % 7 == 0) {
             cell.textLabel.textColor = UIColor.lightRed()
         } else if (indexPath.row % 7 == 6) {
             cell.textLabel.textColor = UIColor.lightBlue()
         } else {
-            cell.textLabel.textColor = UIColor.gray
+            cell.textLabel.textColor = UIColor.black()
         }
         
         //テキスト配置
@@ -213,12 +222,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         for diary in savedDiary{
             
             let element = (photo: diary.photo, date: diary.date, context: diary.context ) //タプル
-            if element == nil {
+            //if element == nil {
                 diarys.append(element as! (photo: NSData, date: String, context: String))
-            }else{
+            //}else{
                 //print("nilです")
                 //return cell //?
-            }
+           // }
             
             
             if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date) {

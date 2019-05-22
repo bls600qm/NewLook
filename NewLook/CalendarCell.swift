@@ -34,13 +34,14 @@ class CalendarCell: UICollectionViewCell {
     override init(frame:CGRect){
         super.init(frame:frame)
         
-        //self.backgroundColor = UIColor(hex: "FFFDF")
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor(hex: "FFFEF")
+        //self.backgroundColor = UIColor.white
         
         //UILabelを生成
         textLabel = UILabel()
         textLabel.frame = CGRect(x:0,y:-self.frame.height/3,width:self.frame.width,height:self.frame.height)
         textLabel.textAlignment = .center
+        textLabel.font = UIFont(name:"AvenirNextCondensed-Medium", size: 17.5)
         self.contentView.addSubview(textLabel!)
         
         //セルの画像 こっちに作っちゃう

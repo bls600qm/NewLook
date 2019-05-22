@@ -35,6 +35,10 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet var contextTextField: UITextField!
     @IBOutlet var photoImageView: UIImageView!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
