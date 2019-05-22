@@ -9,14 +9,17 @@
 import UIKit
 import RealmSwift
 
+
+
 class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     var date: String!
     var photo: NSData!
     
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var contextTextField: UITextField!
+    @IBOutlet var contextTextView: UITextView!
     @IBOutlet var photoImageView: UIImageView!
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
@@ -24,6 +27,31 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //グラデーションの開始色
+        let topColor = UIColor(red: 0.8118, green: 0.2235, blue: 0.4353, alpha: 1.0) /* #cf396f */
+        //グラデーションの開始色
+        let bottomColor = UIColor(red: 0.9686, green: 0.8863, blue: 0.5451, alpha: 1.0) /* #f7e28b */
+        //グラデーションの色を配列で管理
+        let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
+        //グラデーションレイヤーを作成
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        //グラデーションの色をレイヤーに割り当てる
+        gradientLayer.colors = gradientColors
+        //グラデーションレイヤーをスクリーンサイズにする
+        gradientLayer.frame = self.view.bounds
+        
+        //view.layer.addSublayer(gradientLayer)
+        //ViewControllerのViewレイヤーにグラデーションレイヤーを挿入する
+        self.view.layer.insertSublayer(gradientLayer,at:0)
+        
+        dateLabel.textColor = UIColor.white //日付ラベル白にする
+        
+        // 枠のカラー
+        photoImageView.layer.borderColor = UIColor.white.cgColor
+        
+        // 枠の幅
+        photoImageView.layer.borderWidth = 3.0
         
     }
    
@@ -38,14 +66,14 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         dateLabel.text = date
         
-        let realm = try! Realm()
-            
-        if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合 //今日のやつ
-        //すでに値が入ってたらけしちゃう！
-            try! realm.write {
-                realm.delete(savedDiary)
-            }
-        }
+//        let realm = try! Realm()
+//            
+//        if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合 //今日のやつ
+//        //すでに値が入ってたらけしちゃう！
+//            try! realm.write {
+//                realm.delete(savedDiary)
+//            }
+//        }
     }
 
     
@@ -58,7 +86,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         //STEP.2 保存する要素を書く
         let diary = Diary()
         diary.date = date
-        diary.context = contextTextField.text!
+        diary.context = contextTextView.text!
         diary.photo = photo
         
         //STEP.3 Realmに書き込み

@@ -14,6 +14,8 @@
 		9721EA53229558CF00843E96 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9721EA52229558CF00843E96 /* button1.png */; };
 		9721EA55229559BF00843E96 /* kage_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 9721EA54229559BF00843E96 /* kage_b.png */; };
 		972F6D80227549760017B3C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 972F6D7F227549760017B3C0 /* Main.storyboard */; };
+		9748AE8C229592F1003B520B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9748AE8A229592F1003B520B /* camera.png */; };
+		9748AE8D229592F1003B520B /* retro_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9748AE8B229592F1003B520B /* retro_camera.png */; };
 		975AEA9E22931A5D00074669 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 975AEA9C22931A5C00074669 /* right.png */; };
 		975AEA9F22931A5D00074669 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 975AEA9D22931A5D00074669 /* left.png */; };
 		97721CC2228C2B8600001962 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97721CC1228C2B8600001962 /* SubViewController.swift */; };
@@ -36,6 +38,8 @@
 		9721EA52229558CF00843E96 /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		9721EA54229559BF00843E96 /* kage_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kage_b.png; sourceTree = "<group>"; };
 		972F6D7F227549760017B3C0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9748AE8A229592F1003B520B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		9748AE8B229592F1003B520B /* retro_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retro_camera.png; sourceTree = "<group>"; };
 		975AEA9C22931A5C00074669 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		975AEA9D22931A5D00074669 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		97721CC1228C2B8600001962 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				975AEA9D22931A5D00074669 /* left.png */,
 				9721EA54229559BF00843E96 /* kage_b.png */,
 				975AEA9C22931A5C00074669 /* right.png */,
+				9748AE8A229592F1003B520B /* camera.png */,
+				9748AE8B229592F1003B520B /* retro_camera.png */,
 			);
 			path = NewLook;
 			sourceTree = "<group>";
@@ -183,8 +189,10 @@
 			files = (
 				972F6D80227549760017B3C0 /* Main.storyboard in Resources */,
 				975AEA9F22931A5D00074669 /* left.png in Resources */,
+				9748AE8D229592F1003B520B /* retro_camera.png in Resources */,
 				9721EA55229559BF00843E96 /* kage_b.png in Resources */,
 				9721EA5122954B8B00843E96 /* color_button2.png in Resources */,
+				9748AE8C229592F1003B520B /* camera.png in Resources */,
 				9721EA53229558CF00843E96 /* button1.png in Resources */,
 				97CD40FD226323D7000877DA /* LaunchScreen.storyboard in Resources */,
 				975AEA9E22931A5D00074669 /* right.png in Resources */,
