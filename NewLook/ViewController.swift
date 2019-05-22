@@ -65,7 +65,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
-    }
+    }//ステータスバーのを白に
     
     override func viewDidLoad() {
         super.viewDidLoad()

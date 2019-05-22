@@ -9,23 +9,6 @@
 import UIKit
 import RealmSwift
 
-extension UIImage {
-    func resize(size _size: CGSize) -> UIImage? {
-        let widthRatio = _size.width / size.width
-        let heightRatio = _size.height / size.height
-        let ratio = widthRatio < heightRatio ? widthRatio : heightRatio
-        
-        let resizedSize = CGSize(width: size.width * ratio, height: size.height * ratio)
-        
-        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0) // 変更
-        draw(in: CGRect(origin: .zero, size: resizedSize))
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return resizedImage
-    }
-}
-
 class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     var date: String!
@@ -179,9 +162,6 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         var image = info[.originalImage] as! UIImage
         //画像を出力
         photoImageView.image = image
-
-        //縮小のextention呼び出し
-        image = image.resize(size: CGSize(width: 15, height: 15)) ?? image
         //画像をNSDataに変換
         photo = image.pngData() as NSData?
        // print(photo as Any)

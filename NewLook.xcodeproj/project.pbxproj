@@ -13,7 +13,6 @@
 		9721EA5122954B8B00843E96 /* color_button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9721EA5022954B8B00843E96 /* color_button2.png */; };
 		9721EA53229558CF00843E96 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9721EA52229558CF00843E96 /* button1.png */; };
 		9721EA55229559BF00843E96 /* kage_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 9721EA54229559BF00843E96 /* kage_b.png */; };
-		9721EA5B22955BBB00843E96 /* kage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9721EA5A22955BBB00843E96 /* kage2.png */; };
 		972F6D80227549760017B3C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 972F6D7F227549760017B3C0 /* Main.storyboard */; };
 		975AEA9E22931A5D00074669 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 975AEA9C22931A5C00074669 /* right.png */; };
 		975AEA9F22931A5D00074669 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 975AEA9D22931A5D00074669 /* left.png */; };
@@ -36,7 +35,6 @@
 		9721EA5022954B8B00843E96 /* color_button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color_button2.png; sourceTree = "<group>"; };
 		9721EA52229558CF00843E96 /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		9721EA54229559BF00843E96 /* kage_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kage_b.png; sourceTree = "<group>"; };
-		9721EA5A22955BBB00843E96 /* kage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kage2.png; path = ../../../../Desktop/kage2.png; sourceTree = "<group>"; };
 		972F6D7F227549760017B3C0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		975AEA9C22931A5C00074669 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		975AEA9D22931A5D00074669 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				9798C47022769C4B00EFBD43 /* Diary.swift */,
 				9721EA52229558CF00843E96 /* button1.png */,
 				9721EA5022954B8B00843E96 /* color_button2.png */,
-				9721EA5A22955BBB00843E96 /* kage2.png */,
 				9721EA4E22954AF700843E96 /* color_button.png */,
 				975AEA9D22931A5D00074669 /* left.png */,
 				9721EA54229559BF00843E96 /* kage_b.png */,
@@ -192,7 +189,6 @@
 				97CD40FD226323D7000877DA /* LaunchScreen.storyboard in Resources */,
 				975AEA9E22931A5D00074669 /* right.png in Resources */,
 				97CD40FA226323D7000877DA /* Assets.xcassets in Resources */,
-				9721EA5B22955BBB00843E96 /* kage2.png in Resources */,
 				9721EA4F22954AF700843E96 /* color_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
