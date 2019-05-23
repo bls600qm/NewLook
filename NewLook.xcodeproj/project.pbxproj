@@ -20,6 +20,7 @@
 		975AEA9F22931A5D00074669 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 975AEA9D22931A5D00074669 /* left.png */; };
 		97721CC2228C2B8600001962 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97721CC1228C2B8600001962 /* SubViewController.swift */; };
 		9798C47122769C4B00EFBD43 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798C47022769C4B00EFBD43 /* Diary.swift */; };
+		97B44BE822966D9D00C8080A /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97B44BE722966D9D00C8080A /* icon2.png */; };
 		97CD40F3226323D7000877DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD40F2226323D7000877DA /* AppDelegate.swift */; };
 		97CD40F5226323D7000877DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD40F4226323D7000877DA /* ViewController.swift */; };
 		97CD40FA226323D7000877DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97CD40F9226323D7000877DA /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		975AEA9D22931A5D00074669 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		97721CC1228C2B8600001962 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		9798C47022769C4B00EFBD43 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
+		97B44BE722966D9D00C8080A /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
 		97CD40EF226323D6000877DA /* NewLook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewLook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97CD40F2226323D7000877DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97CD40F4226323D7000877DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				975AEA9D22931A5D00074669 /* left.png */,
 				9721EA54229559BF00843E96 /* kage_b.png */,
 				975AEA9C22931A5C00074669 /* right.png */,
+				97B44BE722966D9D00C8080A /* icon2.png */,
 				9748AE8A229592F1003B520B /* camera.png */,
 				9748AE8B229592F1003B520B /* retro_camera.png */,
 			);
@@ -198,6 +201,7 @@
 				975AEA9E22931A5D00074669 /* right.png in Resources */,
 				97CD40FA226323D7000877DA /* Assets.xcassets in Resources */,
 				9721EA4F22954AF700843E96 /* color_button.png in Resources */,
+				97B44BE822966D9D00C8080A /* icon2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

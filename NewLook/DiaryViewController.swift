@@ -28,7 +28,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.contextTextField.delegate = self //閉じない
+        //self.contextTextField.delegate = self //閉じれない
         contextTextField.delegate = self
         
         //グラデーションの開始色
