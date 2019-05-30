@@ -2929,36 +2929,33 @@ bool Array::compare_leafs_4(const Array* foreign, size_t start, size_t end, size
 #if defined(REALM_COMPILER_SSE)
     if (sseavx<42>() && width == foreign_width && (width == 8 || width == 16 || width == 32)) {
         // We can only use SSE if both bitwidths are equal and above 8 bits and all values are signed
-        // and the two arrays are aligned the same way
-        if ((reinterpret_cast<size_t>(m_data) & 0xf) == (reinterpret_cast<size_t>(foreign_m_data) & 0xf)) {
-            while (start < end && (((reinterpret_cast<size_t>(m_data) & 0xf) * 8 + start * width) % (128) != 0)) {
-                int64_t v = get_universal<width>(m_data, start);
-                int64_t fv = get_universal<foreign_width>(foreign_m_data, start);
-                if (c(v, fv)) {
-                    if (!find_action<action, Callback>(start + baseindex, v, state, callback))
-                        return false;
-                }
-                start++;
-            }
-            if (start == end)
-                return true;
-
-
-            size_t sse_items = (end - start) * width / 128;
-            size_t sse_end = start + sse_items * 128 / no0(width);
-
-            while (start < sse_end) {
-                __m128i* a = reinterpret_cast<__m128i*>(m_data + start * width / 8);
-                __m128i* b = reinterpret_cast<__m128i*>(foreign_m_data + start * width / 8);
-
-                bool continue_search =
-                    find_sse_intern<cond, action, width, Callback>(a, b, 1, state, baseindex + start, callback);
-
-                if (!continue_search)
+        while (start < end && (((reinterpret_cast<size_t>(m_data) & 0xf) * 8 + start * width) % (128) != 0)) {
+            int64_t v = get_universal<width>(m_data, start);
+            int64_t fv = get_universal<foreign_width>(foreign_m_data, start);
+            if (c(v, fv)) {
+                if (!find_action<action, Callback>(start + baseindex, v, state, callback))
                     return false;
-
-                start += 128 / no0(width);
             }
+            start++;
+        }
+        if (start == end)
+            return true;
+
+
+        size_t sse_items = (end - start) * width / 128;
+        size_t sse_end = start + sse_items * 128 / no0(width);
+
+        while (start < sse_end) {
+            __m128i* a = reinterpret_cast<__m128i*>(m_data + start * width / 8);
+            __m128i* b = reinterpret_cast<__m128i*>(foreign_m_data + start * width / 8);
+
+            bool continue_search =
+                find_sse_intern<cond, action, width, Callback>(a, b, 1, state, baseindex + start, callback);
+
+            if (!continue_search)
+                return false;
+
+            start += 128 / no0(width);
         }
     }
 #endif

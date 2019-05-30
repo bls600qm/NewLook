@@ -109,35 +109,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //Realmから値を読み込む
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        calenderCollectionView.reloadData()  //今日の画像更新するように追加した
-       // DispatchQueue(label: "background").async { //?いる？
-          //  let realm = try! Realm()
-            
-           // realm.objects(Diary.self) Diaryオブジェクト全て読み込み そのあとフィルター
-//            if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").first { //nilじゃない場合 1日やから.firstでもlastでもいいっぽい
-//
-//                let photoData = savedDiary.photo
-//                //読み込んだ NSData を UIImage へ変換
-//                let img: UIImage! = UIImage(data:photoData! as Data)
-//                 //imageViewに画像を表示
-//                self.photoImageView.image = img
-//
-//            }
-        
-//            //るーぷ？
-//            let savedDiary = realm.objects(Diary.self)
-//            for diary in savedDiary{
-//                let photoData = diary.photo
-//                //読み込んだ NSData を UIImage へ変換
-//                let img: UIImage! = UIImage(data:photoData! as Data)
-//                //imageViewに画像を表示
-//                self.photoImageView.image = img
-//
-//
-//            }
-            
-       // }
+        calenderCollectionView.reloadData()  //今日の画像更新するように追加
     }
 
     //①タップ時
@@ -192,9 +164,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell //元々書いてたやつ これならテキスト（日付）出せる
         
-        
-        //cell.textLabel.font = UIFont(name: "Avenir Next Demi Bold 23.0", size: 20)
-        
         //テキストカラー
         if (indexPath.row % 7 == 0) {
             cell.textLabel.textColor = UIColor.lightRed()
@@ -222,13 +191,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         for diary in savedDiary{
             
             let element = (photo: diary.photo, date: diary.date, context: diary.context ) //タプル
-            //if element == nil {
-                diarys.append(element as! (photo: NSData, date: String, context: String))
-            //}else{
-                //print("nilです")
-                //return cell //?
-           // }
-            
+            diarys.append(element as! (photo: NSData, date: String, context: String))
             
             if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date) {
                 
@@ -261,8 +224,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 }
             }else{
                 cell.imageView.image = nil //他の月に画像が表示されないように *
-                print("else:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
-                print("else:\(element.date)")
+                //print("else:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+                //print("else:\(element.date)")
             }
         }
         
@@ -305,10 +268,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 print("データ無い or 不一致")
             }
         }
-        
-        
-        
-       
     }
     
     //セルのサイズを設定

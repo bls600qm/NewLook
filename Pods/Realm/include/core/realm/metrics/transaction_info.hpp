@@ -51,7 +51,6 @@ public:
     size_t get_free_space() const;
     size_t get_total_objects() const;
     size_t get_num_available_versions() const;
-    size_t get_num_decrypted_pages() const;
 
 private:
     MetricTimerResult m_transaction_time;
@@ -64,11 +63,9 @@ private:
     size_t m_total_objects;
     TransactionType m_type;
     size_t m_num_versions;
-    size_t m_num_decrypted_pages;
 
     friend class Metrics;
-    void update_stats(size_t disk_size, size_t free_space, size_t total_objects, size_t available_versions,
-                      size_t num_decrypted_pages);
+    void update_stats(size_t disk_size, size_t free_space, size_t total_objects, size_t available_versions);
     void finish_timer();
 };
 

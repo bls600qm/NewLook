@@ -91,18 +91,21 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
-//        if let savedDiary = realm.objects(Diary.self).filter("date == '\(self.date!)'").last { //nilじゃない場合 //今日のやつ
-//            //すでに値が入ってたらけしちゃう！
-//            try! realm.write {
-//                realm.delete(savedDiary)
-//            }
-//        }
-
         //STEP.2 保存する要素を書く
         let diary = Diary()
         diary.date = date
         diary.context = contextTextField.text!
         diary.photo = photo
+
+        
+        
+        //*過去データを保存したい時* pngで画像入れて指定する
+//        diary.date = "2019/05/25"
+//        diary.context = " "
+//        if let image = UIImage(named:"photo9"){
+//            diary.photo = image.pngData() as NSData?
+//            //print(diary.photo)
+//        }
         
         //STEP.3 Realmに書き込み
         if diary.photo != nil{
@@ -112,9 +115,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         } else {
             self.dismiss(animated: true, completion: nil)
         }
-        
-        
-        //画面遷移して前の画面に戻る
+        //画面遷移して前の画面に戻る/Users/rikasumitomo/Downloads/jpg
         self.dismiss(animated: true, completion: nil)
         
     }
@@ -197,7 +198,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.dismiss(animated: true, completion: nil)
         
         // 選択した写真を取得する
-        var image = info[.originalImage] as! UIImage
+        let image = info[.originalImage] as! UIImage
         //画像を出力
         photoImageView.image = image
         //画像をNSDataに変換
@@ -205,4 +206,5 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
        // print(photo as Any)
     
     }
+    
 }

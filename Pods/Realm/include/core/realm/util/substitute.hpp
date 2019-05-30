@@ -330,27 +330,19 @@ template<class... A> std::string Substituter<A...>::Template::expand(A&&... arg)
 
 template<class... A> void Substituter<A...>::Template::expand(std::ostream& out, A... arg) const
 {
-    std::ios_base::fmtflags flags = out.flags();
-    try {
-        size_type curr = 0;
-        for (const Substitution& subst: m_substitutions) {
-            out << m_text.substr(curr, subst.begin - curr); // Throws
-            if (subst.var_def) {
-                const std::function<EvalFunc>& eval_func = subst.var_def->second;
-                eval_func(out, arg...); // Throws
-                out.flags(flags);
-            }
-            else {
-                out << "@"; // Throws
-            }
-            curr = subst.end;
+    size_type curr = 0;
+    for (const Substitution& subst: m_substitutions) {
+        out << m_text.substr(curr, subst.begin - curr); // Throws
+        if (subst.var_def) {
+            const std::function<EvalFunc>& eval_func = subst.var_def->second;
+            eval_func(out, arg...); // Throws
         }
-        out << m_text.substr(curr); // Throws
+        else {
+            out << "@"; // Throws
+        }
+        curr = subst.end;
     }
-    catch (...) {
-        out.flags(flags);
-        throw;
-    }
+    out << m_text.substr(curr); // Throws
 }
 
 template<class... A>
