@@ -206,7 +206,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 print (indexPath.row)
                 
-                if indexPath.row == Path {
+                if indexPath.row == Path && indexPath.section == 1 {
                     //読み込んだ NSData を UIImage へ変換
                     img = UIImage(data: element.photo! as Data)
                     print(img)
@@ -250,7 +250,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let element = (photo: diary.photo, date: diary.date, context: diary.context ) //タプル
             diarys.append(element as! (photo: NSData, date: String, context: String))
             
-            if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date){
+            if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date) && indexPath.section == 1{
                 print("選択した日に保存データあり")
                 selectedImage = UIImage(data: element.photo! as Data)
                 selectedComment = element.context

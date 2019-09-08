@@ -50,7 +50,7 @@ class DateManager: NSObject {
 
         let numberOfWeeks = Int((rangeOfWeeks?.count)!) //月が持つ週の数
         numberOfItems = numberOfWeeks * daysPerWeek //週の数×列の数
-        return numberOfItems
+        return (numberOfItems)
     }
     //月の初日を取得
     func firstDateOfMonth() -> Date {
@@ -68,17 +68,23 @@ class DateManager: NSObject {
 
         let ordinalityOfFirstDay = Calendar.current.ordinality(of: .day, in: .weekOfMonth, for: firstDateOfMonth())
 
+        print(ordinalityOfFirstDay)
+        
         for i in 0 ..< numberOfItems {
             // ②「月の初日」と「indexPath.item番目のセルに表示する日」の差を計算する
             var dateComponents = DateComponents()
-
             dateComponents.day = i - (ordinalityOfFirstDay! - 1)
+           
+
+            print(dateComponents.day)
+            
+            //if dateComponents.day as! Int > -1{
             // ③ 表示する月の初日から②で計算した差を引いた日付を取得
-
             let date = Calendar.current.date(byAdding: dateComponents as DateComponents, to: firstDateOfMonth() as Date)!
+            
             // ④配列に追加
-
             currentMonthOfDates.append(date as NSDate)
+            //}
         }
     }
 

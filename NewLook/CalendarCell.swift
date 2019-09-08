@@ -8,19 +8,25 @@
 
 import UIKit
 
-extension UIColor {
-    convenience init(hex: String, alpha: CGFloat) {
-        let v = hex.map { String($0) } + Array(repeating: "0", count: max(6 - hex.count, 0))
-        let r = CGFloat(Int(v[0] + v[1], radix: 16) ?? 0) / 255.0
-        let g = CGFloat(Int(v[2] + v[3], radix: 16) ?? 0) / 255.0
-        let b = CGFloat(Int(v[4] + v[5], radix: 16) ?? 0) / 255.0
-        self.init(red: r, green: g, blue: b, alpha: min(max(alpha, 0), 1))
+extension UIColor{
+    // オリジナルのカラーを生成します。割合については下の方の参考の部分でURLを載せておきます！
+    //オレンジ
+    class func OrangeColor()->UIColor{
+        let Black = UIColor.init(red: 1.0, green: 0.6, blue: 0, alpha: 1.0)
+        return Black
     }
-    
-    convenience init(hex: String) {
-        self.init(hex: hex, alpha: 1.0)
+    //ミドリ
+    class func GreenColor()->UIColor{
+        let Black = UIColor.init(red: 0.0, green: 1.0, blue: 0.6, alpha: 1.0)
+        return Black
+    }
+    //white
+    class func WhiteColor()->UIColor{
+        let Black = UIColor.init(red: 250, green: 250, blue: 250, alpha: 1.0)
+        return Black
     }
 }
+
 
 class CalendarCell: UICollectionViewCell {
     
@@ -34,7 +40,7 @@ class CalendarCell: UICollectionViewCell {
     override init(frame:CGRect){
         super.init(frame:frame)
         
-        self.backgroundColor = UIColor(hex: "FFFEF")
+        self.backgroundColor = UIColor.WhiteColor()
         //self.backgroundColor = UIColor.white
         
         //UILabelを生成
