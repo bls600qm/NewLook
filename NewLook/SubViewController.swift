@@ -10,8 +10,8 @@ import UIKit
 
 
 class SubViewController: UIViewController{
-    @IBOutlet var imageView: UIImageView!
-    
+    @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet var outlineImageView: UIImageView!
     @IBOutlet var commentLabel: UILabel!
     @IBOutlet var rerutnButton: UIButton!
     @IBOutlet var dateLabel: UILabel!
@@ -27,7 +27,7 @@ class SubViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = Img
+        photoImageView.image = Img
         commentLabel.text = Comment
         dateLabel.text = Date
        
