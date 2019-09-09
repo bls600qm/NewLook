@@ -31,23 +31,23 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         //self.contextTextField.delegate = self //閉じれない
         contextTextField.delegate = self
         
-        //グラデーションの開始色
-        let topColor = UIColor(red: 0.8118, green: 0.2235, blue: 0.4353, alpha: 1.0) /* #cf396f */
-        //グラデーションの開始色
-        let bottomColor = UIColor(red: 0.9686, green: 0.8863, blue: 0.5451, alpha: 1.0) /* #f7e28b */
-        //グラデーションの色を配列で管理
-        let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
-        //グラデーションレイヤーを作成
-        let gradientLayer: CAGradientLayer = CAGradientLayer()
-        //グラデーションの色をレイヤーに割り当てる
-        gradientLayer.colors = gradientColors
-        //グラデーションレイヤーをスクリーンサイズにする
-        gradientLayer.frame = self.view.bounds
-        
-        //view.layer.addSublayer(gradientLayer)
-        //ViewControllerのViewレイヤーにグラデーションレイヤーを挿入する
-        self.view.layer.insertSublayer(gradientLayer,at:0)
-        
+//        //グラデーションの開始色
+//        let topColor = UIColor(red: 0.8118, green: 0.2235, blue: 0.4353, alpha: 1.0) /* #cf396f */
+//        //グラデーションの開始色
+//        let bottomColor = UIColor(red: 0.9686, green: 0.8863, blue: 0.5451, alpha: 1.0) /* #f7e28b */
+//        //グラデーションの色を配列で管理
+//        let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
+//        //グラデーションレイヤーを作成
+//        let gradientLayer: CAGradientLayer = CAGradientLayer()
+//        //グラデーションの色をレイヤーに割り当てる
+//        gradientLayer.colors = gradientColors
+//        //グラデーションレイヤーをスクリーンサイズにする
+//        gradientLayer.frame = self.view.bounds
+//        
+//        //view.layer.addSublayer(gradientLayer)
+//        //ViewControllerのViewレイヤーにグラデーションレイヤーを挿入する
+//        self.view.layer.insertSublayer(gradientLayer,at:0)
+//        
         dateLabel.textColor = UIColor.white //日付ラベル白にする
         
         // 枠のカラー

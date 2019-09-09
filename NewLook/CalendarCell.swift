@@ -9,21 +9,11 @@
 import UIKit
 
 extension UIColor{
-    // オリジナルのカラーを生成します。割合については下の方の参考の部分でURLを載せておきます！
-    //オレンジ
-    class func OrangeColor()->UIColor{
-        let Black = UIColor.init(red: 1.0, green: 0.6, blue: 0, alpha: 1.0)
-        return Black
-    }
-    //ミドリ
-    class func GreenColor()->UIColor{
-        let Black = UIColor.init(red: 0.0, green: 1.0, blue: 0.6, alpha: 1.0)
-        return Black
-    }
+    
     //white
     class func WhiteColor()->UIColor{
-        let Black = UIColor.init(red: 250, green: 250, blue: 250, alpha: 1.0)
-        return Black
+        let color = UIColor.init(red: 250, green: 250, blue: 250, alpha: 1.0)
+        return color
     }
 }
 

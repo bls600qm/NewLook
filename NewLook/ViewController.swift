@@ -38,8 +38,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var today: String!
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
-    let margin: CGFloat = 3.0
-
     var date: String!
    // var photos: [UIImageView] = []
     var photos: NSData!
@@ -62,31 +60,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var calenderCollectionView: UICollectionView!//⑤
 
    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }//ステータスバーのを白に
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return UIStatusBarStyle.lightContent
+//    }//ステータスバーのを白に
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let barHeight = UIApplication.shared.statusBarFrame.size.height //バーの高さを取得
+        //let barHeight = UIApplication.shared.statusBarFrame.size.height //バーの高さを取得
+        let barHeight = self.view.frame.height * 0.15 //headerの高さを全体の0.2としているので合わせてる
         let width = self.view.frame.width
         let height = self.view.frame.height
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
         
+       
         //collectionViewの大きさ
-        calenderCollectionView.frame = CGRect(x:0, y:barHeight + 55, width:width, height:height - barHeight - 120)
+        calenderCollectionView.frame = CGRect(x:0, y:barHeight, width:width, height:height*0.8)
         calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")// セルの再利用のための設定
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
         
-        calenderHeaderView.backgroundColor = UIColor.black() //ヘッダーの色
+        self.view.sendSubviewToBack(calenderCollectionView) //背面に送りたい
+        
+        
+        //calenderHeaderView.backgroundColor = UIColor.black() //ヘッダーの色
         headerTitle.text = changeHeaderTitle(date: selectedDate)
         //headerTitle.textColor = UIColor.lightPurple()
         self.view.addSubview(calenderCollectionView)
-
-
+        
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -151,12 +153,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     //2 // cellの数を返す関数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Section毎にCellの総数を変える.
+         //Section毎にCellの総数を変える.
         if section == 0 {
             return 7
         } else {
             return dateManager.daysAcquisition()
         }
+//        if section == 0 {
+//            return dateManager.daysAcquisition()
+//        }else{
+//            return 0
+//        }
     }
     
     //3 // cellに情報を入れていく関数
@@ -175,6 +182,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //テキスト配置
         if indexPath.section == 0 {
+
             cell.textLabel.text = weekArray[indexPath.row]
             //cell.backgroundColor = UIColor.white
             //cell.textLabel.textAlignment = .center
@@ -182,7 +190,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
         }
-        
+//        if indexPath.section == 0 {
+//            cell.textLabel.text = dateManager.conversionDateFormat(indexPath: indexPath)
+//        }
 
         
         let realm = try! Realm()
@@ -193,7 +203,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let element = (photo: diary.photo, date: diary.date, context: diary.context ) //タプル
             diarys.append(element as! (photo: NSData, date: String, context: String))
             
-            if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date) {
+            if ("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))") == (element.date) && indexPath.section == 1{
                 
                 print("\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
                 print(element.date)
@@ -206,7 +216,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 print (indexPath.row)
                 
-                if indexPath.row == Path && indexPath.section == 1 {
+                if indexPath.row == Path{
                     //読み込んだ NSData を UIImage へ変換
                     img = UIImage(data: element.photo! as Data)
                     print(img)
@@ -272,7 +282,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //セルのサイズを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let numberOfMargin: CGFloat = 8.0
+        let numberOfMargin: CGFloat = 9.0
         let width: CGFloat = (collectionView.frame.size.width - cellMargin * numberOfMargin) / CGFloat(daysPerWeek)
         let height: CGFloat = width * 1.6 //セルの縦幅
         return CGSizeMake(width, height)
@@ -295,11 +305,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //headerの月を変更
     func changeHeaderTitle(date: NSDate) -> String {
         let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM"
+        formatter.dateFormat = "yyyy.MM"
         
         let selectMonth = formatter.string(from: date as Date)
         
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/d", options: 0, locale: Locale(identifier: "ja_JP"))
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy.MM.dd", options: 0, locale: Locale(identifier: "ja_JP"))
     
         self.date = formatter.string(from: Date())
     

@@ -11,6 +11,8 @@
 		970A3FF32276A36D00598AC3 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A3FF22276A36D00598AC3 /* DiaryViewController.swift */; };
 		970D7BBE22987E94006372CC /* photo9.png in Resources */ = {isa = PBXBuildFile; fileRef = 970D7BBD22987E94006372CC /* photo9.png */; };
 		972F6D80227549760017B3C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 972F6D7F227549760017B3C0 /* Main.storyboard */; };
+		973A36172326895C00638418 /* saveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 973A36162326895B00638418 /* saveButton.png */; };
+		973A3619232698E700638418 /* returnButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 973A3618232698E600638418 /* returnButton.png */; };
 		9748AE8C229592F1003B520B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9748AE8A229592F1003B520B /* camera.png */; };
 		9748AE8D229592F1003B520B /* retro_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9748AE8B229592F1003B520B /* retro_camera.png */; };
 		975AEA9E22931A5D00074669 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 975AEA9C22931A5C00074669 /* right.png */; };
@@ -20,6 +22,7 @@
 		977357AA232553C200151E04 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 977357A9232553C200151E04 /* button.png */; };
 		977357AC232554C200151E04 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 977357AB232554C200151E04 /* button.png */; };
 		977357AE2325551100151E04 /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 977357AD2325551000151E04 /* button2.png */; };
+		977357B0232567FF00151E04 /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = 977357AF232567FF00151E04 /* header.png */; };
 		9798C47122769C4B00EFBD43 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798C47022769C4B00EFBD43 /* Diary.swift */; };
 		97CC6D25229813A00071492C /* photo4.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CC6D1D229813980071492C /* photo4.png */; };
 		97CC6D26229813A00071492C /* photo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CC6D1E229813990071492C /* photo2.png */; };
@@ -44,6 +47,8 @@
 		970A3FF22276A36D00598AC3 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		970D7BBD22987E94006372CC /* photo9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo9.png; sourceTree = "<group>"; };
 		972F6D7F227549760017B3C0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		973A36162326895B00638418 /* saveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveButton.png; sourceTree = "<group>"; };
+		973A3618232698E600638418 /* returnButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = returnButton.png; sourceTree = "<group>"; };
 		9748AE8A229592F1003B520B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		9748AE8B229592F1003B520B /* retro_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retro_camera.png; sourceTree = "<group>"; };
 		975AEA9C22931A5C00074669 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
@@ -53,6 +58,7 @@
 		977357A9232553C200151E04 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button.png; path = ../../../../Desktop/button.png; sourceTree = "<group>"; };
 		977357AB232554C200151E04 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button.png; path = ../../../../Desktop/button.png; sourceTree = "<group>"; };
 		977357AD2325551000151E04 /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
+		977357AF232567FF00151E04 /* header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header.png; sourceTree = "<group>"; };
 		9798C47022769C4B00EFBD43 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		97CC6D1D229813980071492C /* photo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo4.png; sourceTree = "<group>"; };
 		97CC6D1E229813990071492C /* photo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo2.png; sourceTree = "<group>"; };
@@ -120,9 +126,12 @@
 				97CC6D212298139C0071492C /* photo3.png */,
 				97CC6D1D229813980071492C /* photo4.png */,
 				97CC6D232298139E0071492C /* photo5.png */,
+				973A36162326895B00638418 /* saveButton.png */,
 				977357AB232554C200151E04 /* button.png */,
 				97CC6D1F2298139A0071492C /* photo6.png */,
+				973A3618232698E600638418 /* returnButton.png */,
 				97CC6D202298139B0071492C /* photo7.png */,
+				977357AF232567FF00151E04 /* header.png */,
 				97CC6D24229813A00071492C /* photo8.png */,
 				977357A9232553C200151E04 /* button.png */,
 				970D7BBD22987E94006372CC /* photo9.png */,
@@ -214,15 +223,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				973A36172326895C00638418 /* saveButton.png in Resources */,
 				972F6D80227549760017B3C0 /* Main.storyboard in Resources */,
 				977357AA232553C200151E04 /* button.png in Resources */,
 				977357AC232554C200151E04 /* button.png in Resources */,
+				977357B0232567FF00151E04 /* header.png in Resources */,
 				975AEA9F22931A5D00074669 /* left.png in Resources */,
 				9748AE8D229592F1003B520B /* retro_camera.png in Resources */,
 				977357A8232513E100151E04 /* icon2.png in Resources */,
 				9748AE8C229592F1003B520B /* camera.png in Resources */,
 				97CC6D2A229813A00071492C /* photo1.png in Resources */,
 				97CD40FD226323D7000877DA /* LaunchScreen.storyboard in Resources */,
+				973A3619232698E700638418 /* returnButton.png in Resources */,
 				97CC6D29229813A00071492C /* photo3.png in Resources */,
 				975AEA9E22931A5D00074669 /* right.png in Resources */,
 				97CC6D26229813A00071492C /* photo2.png in Resources */,
