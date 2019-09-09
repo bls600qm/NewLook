@@ -305,11 +305,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //headerの月を変更
     func changeHeaderTitle(date: NSDate) -> String {
         let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM"
+        formatter.dateFormat = "yyyy/MM"
         
         let selectMonth = formatter.string(from: date as Date)
         
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy.MM.dd", options: 0, locale: Locale(identifier: "ja_JP"))
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
     
         self.date = formatter.string(from: Date())
     

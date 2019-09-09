@@ -11,6 +11,7 @@ import UIKit
 
 class SubViewController: UIViewController{
     @IBOutlet var imageView: UIImageView!
+    
     @IBOutlet var commentLabel: UILabel!
     @IBOutlet var rerutnButton: UIButton!
     @IBOutlet var dateLabel: UILabel!

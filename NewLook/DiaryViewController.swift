@@ -19,6 +19,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var contextTextField: UITextField!
     @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet var OutlineImageView: UIImageView!
     
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -87,6 +88,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBAction func saveButtonPushed(_ sender: UIButton) {
         
+        print("保存ボタン押された")
         // STEP.1 Realmを初期化
         let realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
@@ -111,6 +113,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if diary.photo != nil{
             try! realm.write {
                 realm.add(diary, update: true)
+                print("書き込みました")
             }
         } else {
             self.dismiss(animated: true, completion: nil)
