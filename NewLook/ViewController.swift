@@ -58,8 +58,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var headerTitle: UILabel!    //③
     @IBOutlet weak var calenderHeaderView: UIView! //④
     @IBOutlet weak var calenderCollectionView: UICollectionView!//⑤
+    
+    @IBOutlet weak var toumeiView: UIView!
 
-   
 //    override var preferredStatusBarStyle: UIStatusBarStyle {
 //        return UIStatusBarStyle.lightContent
 //    }//ステータスバーのを白に
@@ -74,21 +75,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
        
         //collectionViewの大きさ
-        calenderCollectionView.frame = CGRect(x:0, y:barHeight, width:width, height:height*0.8)
+        calenderCollectionView.frame = CGRect(x:0, y:barHeight, width:width, height:height*0.75)
         calenderCollectionView.register(CalendarCell.self, forCellWithReuseIdentifier: "CalendarCell")// セルの再利用のための設定
         calenderCollectionView.delegate = self
         calenderCollectionView.dataSource = self
-        
-        self.view.sendSubviewToBack(calenderCollectionView) //背面に送りたい
-        
         
         //calenderHeaderView.backgroundColor = UIColor.black() //ヘッダーの色
         headerTitle.text = changeHeaderTitle(date: selectedDate)
         //headerTitle.textColor = UIColor.lightPurple()
         self.view.addSubview(calenderCollectionView)
-        
-        
-        
+        self.view.addSubview(writeButton) //ボタンを全面へ
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,7 +117,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         headerTitle.text = changeHeaderTitle(date: selectedDate)
     }
     //②タップ時
-
     @IBAction func tappedHeaderNextBtn(sender: UIButton) {
         selectedDate = dateManager.nextMonth(date: selectedDate as Date) as NSDate
         calenderCollectionView.reloadData()

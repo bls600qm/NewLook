@@ -209,5 +209,8 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
        // print(photo as Any)
     
     }
-    
+    //下スワイプで前の画面に戻る
+    @IBAction func swipeReturn(_ sender: UISwipeGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

@@ -87,9 +87,13 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="writeButtonPushed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WdQ-LC-WXc"/>
-                                    <segue destination="9yS-FJ-67i" kind="show" identifier="toDiary" id="0sE-mh-XWW"/>
+                                    <segue destination="9yS-FJ-67i" kind="presentation" identifier="toDiary" id="0sE-mh-XWW"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YSh-5c-mxb">
+                                <rect key="frame" x="0.0" y="-1" width="320" height="569"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -112,6 +116,7 @@
                         <outlet property="calenderCollectionView" destination="cf0-9r-ZbB" id="6uJ-7s-aHT"/>
                         <outlet property="calenderHeaderView" destination="G95-Pr-SEI" id="PqW-71-glv"/>
                         <outlet property="headerTitle" destination="EfV-nc-Pbe" id="b3X-Ef-zFX"/>
+                        <outlet property="toumeiView" destination="YSh-5c-mxb" id="4Vh-rQ-GB1"/>
                         <outlet property="writeButton" destination="GCl-eG-Ca7" id="TFr-ql-n6b"/>
                         <segue destination="gJb-qK-LnM" kind="show" identifier="toSubViewController" id="2Fq-uA-Kdw"/>
                     </connections>
@@ -139,7 +144,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-0z-mep">
-                                <rect key="frame" x="40" y="149.5" width="240" height="270"/>
+                                <rect key="frame" x="40" y="139.5" width="240" height="270"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.93443864580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Squ-bX-a33"/>
@@ -162,8 +167,8 @@
                                 <color key="textColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n7B-ti-OW5">
-                                <rect key="frame" x="40" y="449.5" width="240" height="50"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n7B-ti-OW5">
+                                <rect key="frame" x="40" y="439.5" width="240" height="50"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="C2M-4e-BEN"/>
@@ -174,7 +179,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfT-Br-GGa">
-                                <rect key="frame" x="136" y="260.5" width="48" height="48"/>
+                                <rect key="frame" x="136" y="250.5" width="48" height="48"/>
                                 <state key="normal" image="retro_camera.png">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -200,7 +205,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IqW-wT-B4h">
-                                <rect key="frame" x="45" y="154.5" width="230" height="260"/>
+                                <rect key="frame" x="45" y="144.5" width="230" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="Osf-cI-J0y"/>
                                     <constraint firstAttribute="height" constant="260" id="zWv-u9-fxL"/>
@@ -214,6 +219,7 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.8675345778465271" green="0.32474565505981445" blue="0.32440990209579468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="n7B-ti-OW5" firstAttribute="top" secondItem="aQc-0z-mep" secondAttribute="bottom" constant="30" id="ACh-kX-HEi"/>
                             <constraint firstItem="xj5-uP-hMn" firstAttribute="bottom" secondItem="Pcx-h5-iDK" secondAttribute="bottom" multiplier="0.97" id="BPB-Xb-L7e"/>
@@ -225,11 +231,15 @@
                             <constraint firstItem="63d-py-9Sp" firstAttribute="centerX" secondItem="Pcx-h5-iDK" secondAttribute="centerX" id="Z9x-lc-w0y"/>
                             <constraint firstItem="n7B-ti-OW5" firstAttribute="centerX" secondItem="Pcx-h5-iDK" secondAttribute="centerX" id="i6F-A7-gdj"/>
                             <constraint firstItem="63d-py-9Sp" firstAttribute="centerY" secondItem="v3m-a0-Pjz" secondAttribute="top" multiplier="4" id="yJX-0u-kme"/>
-                            <constraint firstItem="aQc-0z-mep" firstAttribute="top" secondItem="63d-py-9Sp" secondAttribute="bottom" constant="50" id="yac-o9-aQs"/>
+                            <constraint firstItem="aQc-0z-mep" firstAttribute="top" secondItem="63d-py-9Sp" secondAttribute="bottom" constant="40" id="yac-o9-aQs"/>
                             <constraint firstItem="xj5-uP-hMn" firstAttribute="trailing" secondItem="Pcx-h5-iDK" secondAttribute="trailing" multiplier="0.97" id="z99-3D-JID"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v3m-a0-Pjz"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="E61-QU-yk6" appends="YES" id="sNB-Jw-lCo"/>
+                        </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="k3u-b8-SFt"/>
                     <connections>
                         <outlet property="contextTextField" destination="n7B-ti-OW5" id="ngz-bO-et3"/>
                         <outlet property="dateLabel" destination="63d-py-9Sp" id="0Ip-JQ-hst"/>
@@ -237,6 +247,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ZB-ic-OIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="E61-QU-yk6">
+                    <connections>
+                        <action selector="swipeReturn:" destination="9yS-FJ-67i" id="qDz-LJ-x0c"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="873.75" y="80.281690140845072"/>
         </scene>
@@ -249,7 +264,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wdL-Ou-jEX">
-                                <rect key="frame" x="40" y="149.5" width="240" height="270"/>
+                                <rect key="frame" x="40" y="139.5" width="240" height="270"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="270" id="CXC-9g-NJV"/>
@@ -263,24 +278,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCe-aJ-gAw">
-                                <rect key="frame" x="240.5" y="481" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="DUk-tU-nmx"/>
-                                    <constraint firstAttribute="height" constant="70" id="I1Q-vC-Z2p"/>
-                                </constraints>
-                                <state key="normal" image="returnButton.png"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds " value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="35"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="returnButtonWithSender:" destination="gJb-qK-LnM" eventType="touchUpInside" id="Piw-sT-geR"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Comment" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7h-hb-qZR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="memo" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7h-hb-qZR">
                                 <rect key="frame" x="50" y="430" width="220" height="39"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -302,23 +300,41 @@
                                     <constraint firstAttribute="width" constant="180" id="8uj-CD-MVY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="28"/>
-                                <color key="textColor" red="0.18036800619999999" green="0.18040603399999999" blue="0.18036559220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="240" verticalHuggingPriority="270" translatesAutoresizingMaskIntoConstraints="NO" id="cB0-hR-Z4c">
-                                <rect key="frame" x="45" y="154.5" width="230" height="260"/>
+                                <rect key="frame" x="45" y="144.5" width="230" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="P3Y-c8-sHx"/>
                                     <constraint firstAttribute="width" constant="230" id="fYi-zU-wPa"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCe-aJ-gAw">
+                                <rect key="frame" x="240.5" y="481" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="DUk-tU-nmx"/>
+                                    <constraint firstAttribute="height" constant="70" id="I1Q-vC-Z2p"/>
+                                </constraints>
+                                <state key="normal" image="returnButton.png"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds " value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="returnButtonWithSender:" destination="gJb-qK-LnM" eventType="touchUpInside" id="Piw-sT-geR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.71289592981338501" green="0.87118804454803467" blue="0.87208062410354614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4zG-l0-P4s" firstAttribute="centerX" secondItem="WIp-gH-aLS" secondAttribute="centerX" id="0wa-FM-D86"/>
                             <constraint firstItem="uCe-aJ-gAw" firstAttribute="trailing" secondItem="WIp-gH-aLS" secondAttribute="trailing" multiplier="0.97" id="3Eh-u9-8QT"/>
                             <constraint firstItem="E7h-hb-qZR" firstAttribute="centerX" secondItem="WIp-gH-aLS" secondAttribute="centerX" id="FWf-tt-OaZ"/>
-                            <constraint firstItem="wdL-Ou-jEX" firstAttribute="top" secondItem="4zG-l0-P4s" secondAttribute="bottom" constant="50" id="MRY-Yq-eng"/>
+                            <constraint firstItem="wdL-Ou-jEX" firstAttribute="top" secondItem="4zG-l0-P4s" secondAttribute="bottom" constant="40" id="MRY-Yq-eng"/>
                             <constraint firstItem="E7h-hb-qZR" firstAttribute="leading" secondItem="wdL-Ou-jEX" secondAttribute="leading" id="XOd-Do-dLg"/>
                             <constraint firstItem="cB0-hR-Z4c" firstAttribute="centerY" secondItem="wdL-Ou-jEX" secondAttribute="centerY" id="YWQ-N8-NfP"/>
                             <constraint firstItem="E7h-hb-qZR" firstAttribute="trailing" secondItem="wdL-Ou-jEX" secondAttribute="trailing" id="bRL-bq-0PO"/>
@@ -330,16 +346,24 @@
                             <constraint firstItem="E7h-hb-qZR" firstAttribute="top" secondItem="wdL-Ou-jEX" secondAttribute="bottom" constant="30" id="zll-3c-NBe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xx7-Bz-GZd"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="xYd-Jy-vSi" appends="YES" id="Kqu-KM-Ozn"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="commentLabel" destination="E7h-hb-qZR" id="kJf-ie-L34"/>
                         <outlet property="dateLabel" destination="4zG-l0-P4s" id="7Bu-Uw-OKN"/>
                         <outlet property="outlineImageView" destination="wdL-Ou-jEX" id="UjY-7j-vrN"/>
                         <outlet property="photoImageView" destination="cB0-hR-Z4c" id="aoQ-Sc-A4d"/>
-                        <outlet property="rerutnButton" destination="uCe-aJ-gAw" id="wIe-Nu-0Ml"/>
+                        <outlet property="returnButton" destination="uCe-aJ-gAw" id="911-QQ-JU6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLh-ZN-1D1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="xYd-Jy-vSi">
+                    <connections>
+                        <action selector="swipeReturn:" destination="gJb-qK-LnM" id="QwH-84-ZaJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="76.875" y="947.53521126760563"/>
         </scene>

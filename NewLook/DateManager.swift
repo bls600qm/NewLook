@@ -9,6 +9,8 @@
 import UIKit
 
 extension Date {
+    
+    
     func monthAgoDate() -> Date {
         let addValue = -1
 
@@ -99,6 +101,7 @@ class DateManager: NSObject {
         return formatter.string(from: currentMonthOfDates[indexPath.row] as Date)
     }
 
+    
     //前月の表示
     func prevMonth(date: Date) -> Date {
         currentMonthOfDates = []

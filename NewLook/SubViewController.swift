@@ -13,7 +13,7 @@ class SubViewController: UIViewController{
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var outlineImageView: UIImageView!
     @IBOutlet var commentLabel: UILabel!
-    @IBOutlet var rerutnButton: UIButton!
+    @IBOutlet var returnButton: UIButton!
     @IBOutlet var dateLabel: UILabel!
     
     var Img: UIImage!
@@ -42,5 +42,8 @@ class SubViewController: UIViewController{
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    //下スワイプで前の画面に戻る
+    @IBAction func swipeReturn(_ sender: UISwipeGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

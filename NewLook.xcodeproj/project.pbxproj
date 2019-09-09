@@ -38,6 +38,7 @@
 		97CD40F5226323D7000877DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD40F4226323D7000877DA /* ViewController.swift */; };
 		97CD40FA226323D7000877DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97CD40F9226323D7000877DA /* Assets.xcassets */; };
 		97CD40FD226323D7000877DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97CD40FB226323D7000877DA /* LaunchScreen.storyboard */; };
+		97E72EDA2326EF9300C64267 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E72ED92326EF9300C64267 /* x.png */; };
 		97EC0696226DC6EC0021DD29 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EC0695226DC6EC0021DD29 /* DateManager.swift */; };
 		97EC069A226DC7420021DD29 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EC0699226DC7420021DD29 /* CalendarCell.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		97CD40F9226323D7000877DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97CD40FC226323D7000877DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97CD40FE226323D7000877DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97E72ED92326EF9300C64267 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = x.png; path = ../../../../Desktop/x.png; sourceTree = "<group>"; };
 		97EC0695226DC6EC0021DD29 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		97EC0699226DC7420021DD29 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 				97CC6D222298139D0071492C /* photo1.png */,
 				97CC6D1E229813990071492C /* photo2.png */,
 				977357AD2325551000151E04 /* button2.png */,
+				97E72ED92326EF9300C64267 /* x.png */,
 				97029CBA2326D904009F7D80 /* button.png */,
 				97CC6D212298139C0071492C /* photo3.png */,
 				97CC6D1D229813980071492C /* photo4.png */,
@@ -249,6 +252,7 @@
 				97CC6D27229813A00071492C /* photo6.png in Resources */,
 				97CD40FA226323D7000877DA /* Assets.xcassets in Resources */,
 				97CC6D25229813A00071492C /* photo4.png in Resources */,
+				97E72EDA2326EF9300C64267 /* x.png in Resources */,
 				97CC6D2C229813A00071492C /* photo8.png in Resources */,
 				97029CBB2326D904009F7D80 /* button.png in Resources */,
 				970D7BBE22987E94006372CC /* photo9.png in Resources */,
