@@ -11,7 +11,7 @@ import RealmSwift
 
 
 
-class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{//, UITextViewDelegate{
 
     var date: String!
     var photo: NSData!
@@ -21,6 +21,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var OutlineImageView: UIImageView!
     
+   // @IBOutlet var contextTextView: UITextView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
@@ -56,6 +57,27 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         // 枠の幅
         photoImageView.layer.borderWidth = 3.0
         
+//        //TextViewで完了のバーを表示させる
+//        // 仮のサイズでツールバー生成
+//        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+//        kbToolBar.barStyle = UIBarStyle.default  // スタイルを設定
+//
+//        kbToolBar.sizeToFit()  // 画面幅に合わせてサイズを変更
+//
+//        // スペーサー
+//        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+//
+//        // 閉じるボタン
+//        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: "commitButtonTapped")
+//
+//        kbToolBar.items = [spacer, commitButton]
+//
+//
+//        contextTextView.inputAccessoryView = kbToolBar
+        
+    }
+    func commitButtonTapped (){
+        self.view.endEditing(true)
     }
    
     override func didReceiveMemoryWarning() {

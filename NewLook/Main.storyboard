@@ -90,10 +90,6 @@
                                     <segue destination="9yS-FJ-67i" kind="presentation" identifier="toDiary" id="0sE-mh-XWW"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YSh-5c-mxb">
-                                <rect key="frame" x="0.0" y="-1" width="320" height="569"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019999998" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -116,9 +112,8 @@
                         <outlet property="calenderCollectionView" destination="cf0-9r-ZbB" id="6uJ-7s-aHT"/>
                         <outlet property="calenderHeaderView" destination="G95-Pr-SEI" id="PqW-71-glv"/>
                         <outlet property="headerTitle" destination="EfV-nc-Pbe" id="b3X-Ef-zFX"/>
-                        <outlet property="toumeiView" destination="YSh-5c-mxb" id="4Vh-rQ-GB1"/>
                         <outlet property="writeButton" destination="GCl-eG-Ca7" id="TFr-ql-n6b"/>
-                        <segue destination="gJb-qK-LnM" kind="show" identifier="toSubViewController" id="2Fq-uA-Kdw"/>
+                        <segue destination="gJb-qK-LnM" kind="presentation" identifier="toSubViewController" id="2Fq-uA-Kdw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,7 +139,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-0z-mep">
-                                <rect key="frame" x="40" y="139.5" width="240" height="270"/>
+                                <rect key="frame" x="40" y="193.5" width="240" height="270"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.93443864580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Squ-bX-a33"/>
@@ -167,19 +162,8 @@
                                 <color key="textColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n7B-ti-OW5">
-                                <rect key="frame" x="40" y="439.5" width="240" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="C2M-4e-BEN"/>
-                                    <constraint firstAttribute="height" constant="50" id="fE0-kl-atB"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfT-Br-GGa">
-                                <rect key="frame" x="136" y="250.5" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfT-Br-GGa">
+                                <rect key="frame" x="136" y="300" width="48" height="58"/>
                                 <state key="normal" image="retro_camera.png">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -205,7 +189,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IqW-wT-B4h">
-                                <rect key="frame" x="45" y="144.5" width="230" height="260"/>
+                                <rect key="frame" x="45" y="198.5" width="230" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="Osf-cI-J0y"/>
                                     <constraint firstAttribute="height" constant="260" id="zWv-u9-fxL"/>
@@ -217,11 +201,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n7B-ti-OW5">
+                                <rect key="frame" x="40" y="113.5" width="240" height="50"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="C2M-4e-BEN"/>
+                                    <constraint firstAttribute="height" constant="50" id="fE0-kl-atB"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.8675345778465271" green="0.32474565505981445" blue="0.32440990209579468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="n7B-ti-OW5" firstAttribute="top" secondItem="aQc-0z-mep" secondAttribute="bottom" constant="30" id="ACh-kX-HEi"/>
+                            <constraint firstItem="n7B-ti-OW5" firstAttribute="top" secondItem="Pcx-h5-iDK" secondAttribute="bottom" multiplier="0.2" id="ACh-kX-HEi"/>
                             <constraint firstItem="xj5-uP-hMn" firstAttribute="bottom" secondItem="Pcx-h5-iDK" secondAttribute="bottom" multiplier="0.97" id="BPB-Xb-L7e"/>
                             <constraint firstItem="SfT-Br-GGa" firstAttribute="centerY" secondItem="IqW-wT-B4h" secondAttribute="centerY" id="Dsd-K9-gew"/>
                             <constraint firstItem="SfT-Br-GGa" firstAttribute="centerX" secondItem="IqW-wT-B4h" secondAttribute="centerX" id="HRU-TV-baf"/>
@@ -231,7 +226,7 @@
                             <constraint firstItem="63d-py-9Sp" firstAttribute="centerX" secondItem="Pcx-h5-iDK" secondAttribute="centerX" id="Z9x-lc-w0y"/>
                             <constraint firstItem="n7B-ti-OW5" firstAttribute="centerX" secondItem="Pcx-h5-iDK" secondAttribute="centerX" id="i6F-A7-gdj"/>
                             <constraint firstItem="63d-py-9Sp" firstAttribute="centerY" secondItem="v3m-a0-Pjz" secondAttribute="top" multiplier="4" id="yJX-0u-kme"/>
-                            <constraint firstItem="aQc-0z-mep" firstAttribute="top" secondItem="63d-py-9Sp" secondAttribute="bottom" constant="40" id="yac-o9-aQs"/>
+                            <constraint firstItem="aQc-0z-mep" firstAttribute="top" secondItem="n7B-ti-OW5" secondAttribute="bottom" constant="30" id="yac-o9-aQs"/>
                             <constraint firstItem="xj5-uP-hMn" firstAttribute="trailing" secondItem="Pcx-h5-iDK" secondAttribute="trailing" multiplier="0.97" id="z99-3D-JID"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v3m-a0-Pjz"/>
@@ -241,6 +236,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="k3u-b8-SFt"/>
                     <connections>
+                        <outlet property="OutlineImageView" destination="aQc-0z-mep" id="oMy-6d-pbq"/>
                         <outlet property="contextTextField" destination="n7B-ti-OW5" id="ngz-bO-et3"/>
                         <outlet property="dateLabel" destination="63d-py-9Sp" id="0Ip-JQ-hst"/>
                         <outlet property="photoImageView" destination="IqW-wT-B4h" id="MRf-Il-Vws"/>

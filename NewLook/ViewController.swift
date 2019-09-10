@@ -58,8 +58,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var headerTitle: UILabel!    //③
     @IBOutlet weak var calenderHeaderView: UIView! //④
     @IBOutlet weak var calenderCollectionView: UICollectionView!//⑤
-    
-    @IBOutlet weak var toumeiView: UIView!
 
 //    override var preferredStatusBarStyle: UIStatusBarStyle {
 //        return UIStatusBarStyle.lightContent
@@ -85,6 +83,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //headerTitle.textColor = UIColor.lightPurple()
         self.view.addSubview(calenderCollectionView)
         self.view.addSubview(writeButton) //ボタンを全面へ
+        
+        calenderCollectionView.isScrollEnabled = false //スクロールさせない
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
