@@ -9,10 +9,39 @@
 import UIKit
 import RealmSwift
 
+//extension UIImage {
+//    func resize(size _size: CGSize) -> UIImage? {
+//        let widthRatio = _size.width / size.width
+//        let heightRatio = _size.height / size.height
+//        let ratio = widthRatio < heightRatio ? widthRatio : heightRatio
+//        
+//        let resizedSize = CGSize(width: size.width * ratio, height: size.height * ratio)
+//        
+//        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0) // 変更
+//        draw(in: CGRect(origin: .zero, size: resizedSize))
+//        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        
+//        return resizedImage
+//    }
+//}
+extension UIImage {
+    func resized(withPercentage percentage: CGFloat) -> UIImage? {
+        let canvas = CGSize(width: size.width * percentage, height: size.height * percentage)
+        return UIGraphicsImageRenderer(size: canvas, format: imageRendererFormat).image {
+            _ in draw(in: CGRect(origin: .zero, size: canvas))
+        }
+    }
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvas = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        return UIGraphicsImageRenderer(size: canvas, format: imageRendererFormat).image {
+            _ in draw(in: CGRect(origin: .zero, size: canvas))
+        }
+    }
+}
 
 
-class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{//, UITextViewDelegate{
-
+class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     var date: String!
     var photo: NSData!
     
@@ -21,18 +50,20 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var OutlineImageView: UIImageView!
     
-   // @IBOutlet var contextTextView: UITextView!
+    //@IBOutlet var contextTextView: UITextView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
+    
+    let imagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //self.contextTextField.delegate = self //閉じれない
         contextTextField.delegate = self
-        
+        imagePickerController.delegate = self
 //        //グラデーションの開始色
 //        let topColor = UIColor(red: 0.8118, green: 0.2235, blue: 0.4353, alpha: 1.0) /* #cf396f */
 //        //グラデーションの開始色
@@ -57,29 +88,25 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         // 枠の幅
         photoImageView.layer.borderWidth = 3.0
         
-//        //TextViewで完了のバーを表示させる
-//        // 仮のサイズでツールバー生成
-//        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-//        kbToolBar.barStyle = UIBarStyle.default  // スタイルを設定
-//
-//        kbToolBar.sizeToFit()  // 画面幅に合わせてサイズを変更
-//
-//        // スペーサー
-//        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-//
-//        // 閉じるボタン
-//        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: "commitButtonTapped")
-//
-//        kbToolBar.items = [spacer, commitButton]
-//
-//
-//        contextTextView.inputAccessoryView = kbToolBar
+        //        //TextViewで完了のバーを表示させる
+        //        // 仮のサイズでツールバー生成
+        //        let kbToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+        //        kbToolBar.barStyle = UIBarStyle.default  // スタイルを設定
+        //
+        //        kbToolBar.sizeToFit()  // 画面幅に合わせてサイズを変更
+        //
+        //        // スペーサー
+        //        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        //
+        //        // 閉じるボタン
+        //        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: "commitButtonTapped")
+        //
+        //        kbToolBar.items = [spacer, commitButton]
+        //
+        //
+        //        contextTextView.inputAccessoryView = kbToolBar
         
     }
-    func commitButtonTapped (){
-        self.view.endEditing(true)
-    }
-   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -220,16 +247,27 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     //写真のピックが完了した時に呼ばれる
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        self.dismiss(animated: true, completion: nil)
         
         // 選択した写真を取得する
         let image = info[.originalImage] as! UIImage
+//        print(image.size)
+//        let Resize:CGSize = CGSize.init(width: image.size.width * 0.5, height:image.size.height * 0.5)
+//        //UIImageを指定のサイズにリサイズ
+//        let imageResize = image.resize(size: Resize)
+//        print(imageResize)
         //画像を出力
         photoImageView.image = image
+        
+        //画像データ小さく
+        let resizedImage = image.resized(withPercentage: 0.1)
         //画像をNSDataに変換
-        photo = image.pngData() as NSData?
-       // print(photo as Any)
+       // photo = image.pngData() as NSData?
+        photo = resizedImage?.pngData() as NSData?
     
+       // print(photo as Any)
+        self.dismiss(animated: true, completion: nil)
+    
+        
     }
     //下スワイプで前の画面に戻る
     @IBAction func swipeReturn(_ sender: UISwipeGestureRecognizer) {
