@@ -168,7 +168,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-0z-mep">
                                 <rect key="frame" x="40" y="209.5" width="240" height="270"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.93443864580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.98028594260000002" green="0.9804533124" blue="0.98027533290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Squ-bX-a33"/>
                                     <constraint firstAttribute="height" constant="270" id="nEP-4p-X77"/>
@@ -192,7 +192,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n7B-ti-OW5">
                                 <rect key="frame" x="40" y="129.5" width="240" height="50"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.98028594260000002" green="0.9804533124" blue="0.98027533290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="C2M-4e-BEN"/>
                                     <constraint firstAttribute="height" constant="50" id="fE0-kl-atB"/>
@@ -245,7 +245,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.8675345778465271" green="0.32474565505981445" blue="0.32440990209579468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="n7B-ti-OW5" firstAttribute="top" secondItem="63d-py-9Sp" secondAttribute="bottom" constant="30" id="ACh-kX-HEi"/>
@@ -270,7 +270,7 @@
                     <connections>
                         <outlet property="OutlineImageView" destination="aQc-0z-mep" id="oMy-6d-pbq"/>
                         <outlet property="contextTextField" destination="n7B-ti-OW5" id="ngz-bO-et3"/>
-                        <outlet property="dateLabel" destination="63d-py-9Sp" id="0Ip-JQ-hst"/>
+                        <outlet property="dateLabel" destination="63d-py-9Sp" id="THo-v1-gfz"/>
                         <outlet property="photoImageView" destination="IqW-wT-B4h" id="MRf-Il-Vws"/>
                     </connections>
                 </viewController>
@@ -381,7 +381,7 @@
                     </view>
                     <connections>
                         <outlet property="commentLabel" destination="E7h-hb-qZR" id="kJf-ie-L34"/>
-                        <outlet property="dateLabel" destination="4zG-l0-P4s" id="7Bu-Uw-OKN"/>
+                        <outlet property="dateLabel" destination="4zG-l0-P4s" id="FpG-dH-375"/>
                         <outlet property="outlineImageView" destination="wdL-Ou-jEX" id="UjY-7j-vrN"/>
                         <outlet property="photoImageView" destination="cB0-hR-Z4c" id="aoQ-Sc-A4d"/>
                         <outlet property="returnButton" destination="uCe-aJ-gAw" id="911-QQ-JU6"/>
@@ -398,11 +398,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="button.png" width="56" height="56"/>
+        <image name="button.png" width="222" height="222"/>
         <image name="camera.png" width="256" height="256"/>
         <image name="left1.png" width="21" height="35"/>
-        <image name="returnButton.png" width="74" height="74"/>
+        <image name="returnButton.png" width="148" height="148"/>
         <image name="right1.png" width="21" height="35"/>
-        <image name="saveButton.png" width="74" height="74"/>
+        <image name="saveButton.png" width="222" height="222"/>
     </resources>
 </document>
