@@ -267,13 +267,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     print(selectedDateData)
                     // SubViewController へ遷移するために Segue を呼び出す
                     performSegue(withIdentifier: "toSubViewController",sender: nil)
+                    
                 }
                 
             }else {
                 print("データ無い or 不一致")
+                print("押された日:\(changeHeaderTitle(date: selectedDate))/\(dateManager.conversionDateFormat(indexPath: indexPath))")
+                print("押されたパス\(indexPath.row)")
             }
         }
     }
+    
     
     //セルのサイズを設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

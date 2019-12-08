@@ -63,7 +63,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tb9-zN-brQ">
-                                        <rect key="frame" x="15" y="32" width="18" height="30"/>
+                                        <rect key="frame" x="15" y="23.5" width="18" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tb9-zN-brQ" secondAttribute="height" multiplier="3:5" id="486-Og-nG3"/>
                                             <constraint firstAttribute="width" constant="18" id="cMV-W5-tgL"/>
@@ -74,7 +74,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0Q-FX-CSA">
-                                        <rect key="frame" x="287" y="32" width="18" height="30"/>
+                                        <rect key="frame" x="287" y="23.5" width="18" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="18" id="Fcx-WE-6ae"/>
                                             <constraint firstAttribute="width" secondItem="m0Q-FX-CSA" secondAttribute="height" multiplier="3:5" id="jx1-vX-vje"/>
@@ -90,7 +90,7 @@
                                     <constraint firstItem="m0Q-FX-CSA" firstAttribute="centerX" secondItem="G95-Pr-SEI" secondAttribute="centerX" multiplier="1.85" id="K8a-z2-qiV"/>
                                     <constraint firstItem="m0Q-FX-CSA" firstAttribute="centerY" secondItem="EfV-nc-Pbe" secondAttribute="centerY" id="M6k-Nl-ZgA"/>
                                     <constraint firstItem="Tb9-zN-brQ" firstAttribute="centerX" secondItem="G95-Pr-SEI" secondAttribute="centerX" multiplier="0.15" id="QS1-oF-6cb"/>
-                                    <constraint firstItem="EfV-nc-Pbe" firstAttribute="top" secondItem="G95-Pr-SEI" secondAttribute="centerY" multiplier="0.65" id="TiC-oJ-XN3"/>
+                                    <constraint firstItem="EfV-nc-Pbe" firstAttribute="top" secondItem="G95-Pr-SEI" secondAttribute="centerY" multiplier="0.45" id="TiC-oJ-XN3"/>
                                     <constraint firstItem="Tb9-zN-brQ" firstAttribute="centerY" secondItem="EfV-nc-Pbe" secondAttribute="centerY" id="tf2-QP-xpG"/>
                                     <constraint firstItem="EfV-nc-Pbe" firstAttribute="centerX" secondItem="G95-Pr-SEI" secondAttribute="centerX" id="zjQ-EI-aeQ"/>
                                 </constraints>
@@ -182,7 +182,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019.05.28" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63d-py-9Sp">
-                                <rect key="frame" x="70" y="61" width="180" height="38.5"/>
+                                <rect key="frame" x="70" y="60.5" width="180" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="8fZ-mt-Spa"/>
                                 </constraints>
@@ -192,7 +192,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n7B-ti-OW5">
                                 <rect key="frame" x="40" y="129.5" width="240" height="50"/>
-                                <color key="backgroundColor" red="0.98028594260000002" green="0.9804533124" blue="0.98027533290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="C2M-4e-BEN"/>
                                     <constraint firstAttribute="height" constant="50" id="fE0-kl-atB"/>
@@ -281,7 +281,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="873.75" y="80.281690140845072"/>
+            <point key="canvasLocation" x="804" y="63"/>
         </scene>
         <!--Sub View Controller-->
         <scene sceneID="W1x-c4-bns">
@@ -307,7 +307,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019.05.28" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zG-l0-P4s">
-                                <rect key="frame" x="70" y="61" width="180" height="38.5"/>
+                                <rect key="frame" x="70" y="60.5" width="180" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="8uj-CD-MVY"/>
                                 </constraints>
@@ -399,7 +399,7 @@
     </scenes>
     <resources>
         <image name="button.png" width="222" height="222"/>
-        <image name="camera.png" width="256" height="256"/>
+        <image name="camera.png" width="48" height="48"/>
         <image name="left1.png" width="21" height="35"/>
         <image name="returnButton.png" width="148" height="148"/>
         <image name="right1.png" width="21" height="35"/>

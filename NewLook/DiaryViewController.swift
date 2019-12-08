@@ -259,7 +259,7 @@ class DiaryViewController: UIViewController, UIImagePickerControllerDelegate, UI
         photoImageView.image = image
         
         //画像データ小さく
-        let resizedImage = image.resized(withPercentage: 0.1)
+        let resizedImage = image.resized(withPercentage: 0.7)
         //画像をNSDataに変換
        // photo = image.pngData() as NSData?
         photo = resizedImage?.pngData() as NSData?

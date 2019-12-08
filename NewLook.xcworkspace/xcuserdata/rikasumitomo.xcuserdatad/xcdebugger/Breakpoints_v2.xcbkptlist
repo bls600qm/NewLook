@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "B5CF6D58-F7F3-45F5-AF3A-E9C67202BA68"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "2D8DA36E-9B71-42C6-B837-FF303D490DCB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewLook/DiaryViewController.swift"
-            timestampString = "589893917.893921"
+            timestampString = "589905901.848374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"

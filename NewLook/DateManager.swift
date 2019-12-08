@@ -96,7 +96,7 @@ class DateManager: NSObject {
         dateForCellAtIndexPath(numberOfItem: numberOfItems)
 
         let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "d"
+        formatter.dateFormat = "dd" //こっちがdになってたので12/08と12/8が一致せず非表示バグが起きていました 12/8
 
         return formatter.string(from: currentMonthOfDates[indexPath.row] as Date)
     }
